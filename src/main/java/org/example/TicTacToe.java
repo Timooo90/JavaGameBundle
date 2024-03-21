@@ -36,8 +36,13 @@ public class TicTacToe {
 
              */
         }
-
-
     }
 
+    public int[][] getGameBoard() {
+        return gameBoard;
+    }
+
+    public void setGameBoard(int[][] gameBoard) {
+        this.gameBoard = gameBoard;
+    }
 }
