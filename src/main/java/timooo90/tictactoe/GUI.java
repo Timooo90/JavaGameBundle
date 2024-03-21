@@ -1,5 +1,7 @@
-package org.example;
+package timooo90.tictactoe;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.HBox;
@@ -24,7 +26,16 @@ public class GUI extends Application {
 
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI.fxml"));
+
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+        /*
         Scene scene = new Scene(createPlayArea(3));
 
         scene.getStylesheets().add("gui.css");
@@ -33,6 +44,7 @@ public class GUI extends Application {
         primaryStage.setScene(scene);
 
         primaryStage.show();
+         */
     }
 
 

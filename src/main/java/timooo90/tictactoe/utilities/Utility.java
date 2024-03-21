@@ -1,4 +1,4 @@
-package org.example.utilities;
+package timooo90.tictactoe.utilities;
 
 
 public final class Utility {

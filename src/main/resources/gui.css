@@ -1,3 +1,9 @@
+.playAreaSquare {
+    -fx-background-color: black;
+    -fx-stroke: red;
+    -fx-stroke-width: 5;
+}
+
 .playAreaSquare:hover {
     -fx-fill: gray;
 }

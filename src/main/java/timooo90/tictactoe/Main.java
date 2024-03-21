@@ -1,4 +1,4 @@
-package org.example;
+package timooo90.tictactoe;
 
 import java.util.Arrays;
 

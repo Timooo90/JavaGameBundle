@@ -1,6 +1,6 @@
-package org.example;
+package timooo90.tictactoe;
 
-import org.example.utilities.Utility;
+import timooo90.tictactoe.utilities.Utility;
 
 import java.util.Arrays;
 
