@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -7,7 +9,13 @@ public class Main {
 
         GUI gui = new GUI();
 
-        gui.main(args);
+        for (int i = 0; i < game.getGameBoard().length; i++) {
+            System.out.println(Arrays.toString(game.getGameBoard()[i]));
+        }
+
+        gui.main();
+
+
 
 
 
