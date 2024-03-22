@@ -12,6 +12,7 @@ public class TicTacToe {
     private AIPlayStyle aiPlayStyle = AIPlayStyle.RANDOM;
     private int[][] gameBoard;
     private boolean playerTurn = true;
+    private boolean gameOver = false;
 
     public TicTacToe(GUIController controller) {
         this.controller = controller;
@@ -38,8 +39,8 @@ public class TicTacToe {
     }
 
 
-    public int[][] handleMouseClick(String coordinates) {
-        if (coordinates.length() != 2 || !playerTurn) { return gameBoard; }
+    public void handleMouseClick(String coordinates) {
+        if (gameOver || coordinates.length() != 2 || !playerTurn) { return; }
 
         int x = Character.getNumericValue(coordinates.charAt(0));
         int y = Character.getNumericValue(coordinates.charAt(1));
@@ -49,15 +50,11 @@ public class TicTacToe {
             playerTurn = false;
             controller.setSquareLabelValue("L" + x + y, "X");
             if (isGameOver()) {
-                return gameBoard;
+                return ;
             }
         }
 
-        //printGameBoardToConsole();
-
         if (!playerTurn && !isGameBoardFull()) { handleAITurn(); }
-
-        return gameBoard;
     }
 
     private void handleAIMove(String coordinates) {
@@ -130,7 +127,6 @@ public class TicTacToe {
         for (int i = 0; i < gameBoard.length; i++) {
             int rowSum = Arrays.stream(gameBoard[i]).sum();
             if (rowSum == gameBoard.length || rowSum == -gameBoard.length) {
-                System.out.println("Row sum is " + rowSum);
                 return true;
             }
         }
@@ -145,7 +141,6 @@ public class TicTacToe {
             }
 
             if (columnSum == gameBoard.length || columnSum == -gameBoard.length) {
-                System.out.println("Column sum is " + columnSum);
                 return true;
             }
         }
