@@ -48,7 +48,9 @@ public class TicTacToe {
             gameBoard[x][y] = 1;
             playerTurn = false;
             controller.setSquareLabelValue("L" + x + y, "X");
-            checkWinConditions();
+            if (isGameOver()) {
+                return gameBoard;
+            }
         }
 
         //printGameBoardToConsole();
@@ -72,7 +74,7 @@ public class TicTacToe {
             case OPTIMIZED: selectAIOptimizedMove();
         }
 
-        checkWinConditions();
+        if (isGameOver()) { return; }
 
         playerTurn = true;
     }
@@ -117,10 +119,11 @@ public class TicTacToe {
         return true;
     }
 
-    private void checkWinConditions() {
-        if (rowCheck() || columnCheck() || diagonalCheck() || antiDiagonalCheck()) {
-            System.out.println("Joku voitti!");
+    private boolean isGameOver() {
+        if (isGameBoardFull() || rowCheck() || columnCheck() || diagonalCheck() || antiDiagonalCheck()) {
+            return true;
         }
+        return false;
     }
 
     private boolean rowCheck() {
