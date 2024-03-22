@@ -6,8 +6,7 @@ import java.util.Arrays;
 
 public class TicTacToe {
     private int[][] gameBoard;
-
-
+    private boolean playerTurn = true;
 
     public TicTacToe() {
         initializeBoard();
@@ -16,14 +15,7 @@ public class TicTacToe {
     private void initializeBoard() {
         gameBoard = Utility.getEmptyBoard();
     }
-
-    public void startGame() {
-        boolean playerTurn = true;
-
-        while (true) {
-            
-        }
-    }
+    
 
     public void printGameBoard() {
 

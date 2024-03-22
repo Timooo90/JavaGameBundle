@@ -7,3 +7,8 @@
 .playAreaSquare:hover {
     -fx-fill: gray;
 }
+
+.playerMoves {
+    -fx-font-size: 120;
+    -fx-text-fill: blue;
+}

@@ -17,9 +17,6 @@ public class GUI extends Application {
     private Stage primaryStage;
     private int[][] gameBoard;
 
-
-
-
     public void main() {
         launch();
     }

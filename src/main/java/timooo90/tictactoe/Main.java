@@ -9,14 +9,15 @@ public class Main {
 
         GUI gui = new GUI();
 
-        for (int i = 0; i < game.getGameBoard().length; i++) {
-            System.out.println(Arrays.toString(game.getGameBoard()[i]));
-        }
+        GUIController controller = new GUIController();
+
+        controller.setGame(game);
+        controller.setGraphicalUI(gui);
 
         gui.main();
 
 
-
+        //gui.main();
 
 
         //game.printGameBoard();

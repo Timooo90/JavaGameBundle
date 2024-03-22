@@ -5,6 +5,24 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Rectangle;
 
 public class GUIController {
+    private TicTacToe game;
+    private GUI graphicalUI;
+
+    public TicTacToe getGame() {
+        return game;
+    }
+
+    public void setGame(TicTacToe game) {
+        this.game = game;
+    }
+
+    public GUI getGraphicalUI() {
+        return graphicalUI;
+    }
+
+    public void setGraphicalUI(GUI graphicalUI) {
+        this.graphicalUI = graphicalUI;
+    }
 
     @FXML
     private void squareClicked(MouseEvent event) {
@@ -16,4 +34,6 @@ public class GUIController {
             System.out.println(rectangle.getId());
         }
     }
+
+
 }
