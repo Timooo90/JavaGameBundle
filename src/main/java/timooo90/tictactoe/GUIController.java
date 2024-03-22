@@ -14,13 +14,12 @@ public class GUIController {
     @FXML
     private VBox mainVBox;
     HashMap<String, Label> squareLabels;
-
     private TicTacToe game;
     private GUI graphicalUI;
 
 
     public void startNewGame() {
-        this.game = new TicTacToe();
+        this.game = new TicTacToe(this);
         squareLabels = new HashMap<>();
         generatePlayAreaSquares();
     }
@@ -54,8 +53,6 @@ public class GUIController {
         rectangle.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
                 game.handleMouseClick(rectangle.getId());
-
-                setSquareLabelValue("L" + rectangle.getId(), "X");
             }
         });
 
@@ -72,7 +69,7 @@ public class GUIController {
         return label;
     }
 
-    private void setSquareLabelValue(String labelID ,String value) {
+    public void setSquareLabelValue(String labelID ,String value) {
         Label label = squareLabels.get(labelID);
         label.setText(value);
     }
