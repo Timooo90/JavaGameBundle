@@ -2,6 +2,8 @@ package timooo90.tictactoe;
 
 import timooo90.tictactoe.utilities.Utility;
 
+import java.util.Arrays;
+
 
 public class TicTacToe {
     private int[][] gameBoard;
@@ -24,20 +26,27 @@ public class TicTacToe {
         setGameBoard(Utility.getEmptyBoard());
     }
 
+    public void printGameBoardToConsole() {
+        for (int i = 0; i < gameBoard.length; i++) {
+            System.out.println(Arrays.toString(gameBoard[i]));
+        }
+    }
 
 
-    public void handleMouseClick(String coordinates) {
-        System.out.println(coordinates);
-        if (coordinates.length() != 2) { return; }
+
+    public int[][] handleMouseClick(String coordinates) {
+        if (coordinates.length() != 2) { return gameBoard; }
 
         int x = Character.getNumericValue(coordinates.charAt(0));
         int y = Character.getNumericValue(coordinates.charAt(1));
-
 
         if (gameBoard[x][y] == 0) {
             gameBoard[x][y] = 1;
         }
 
+        printGameBoardToConsole();
+
+        return gameBoard;
     }
 
 }

@@ -9,8 +9,9 @@
 
 <GridPane minWidth="-Infinity" minHeight="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timooo90.tictactoe.GUIController" stylesheets="@gui.css">
     <children>
-        <VBox>
+        <VBox fx:id="mainVBox">
             <children>
+                <!--
                 <HBox>
                     <children>
                         <StackPane>
@@ -68,6 +69,7 @@
                         </StackPane>
                     </children>
                 </HBox>
+                -->
             </children>
         </VBox>
     </children>

@@ -53,8 +53,6 @@ public class GUI extends Application {
         controller.setGraphicalUI(this);
         controller.setGame(this.game);
 
-        System.out.println(controller.getGame());
-
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
