@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06ce084e-d273-4a2e-b258-48afb9b26d97" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/TicTacToe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/TicTacToe.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
