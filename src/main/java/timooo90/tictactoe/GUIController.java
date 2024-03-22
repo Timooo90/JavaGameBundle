@@ -12,15 +12,22 @@ import java.util.HashMap;
 
 public class GUIController {
     @FXML
-    private VBox mainVBox;
+    private VBox contentBox;
+    @FXML
+    private VBox infoBox;
+    @FXML
+    private Label gameEndLabel;
     HashMap<String, Label> squareLabels;
     private TicTacToe game;
     private GUI graphicalUI;
 
 
     public void startNewGame() {
+        gameEndLabel.setText("");
         this.game = new TicTacToe(this);
         squareLabels = new HashMap<>();
+        contentBox.getChildren().clear();
+
         generatePlayAreaSquares();
     }
 
@@ -37,7 +44,7 @@ public class GUIController {
 
                 row.getChildren().addAll(stackPane);
             }
-            getMainVBox().getChildren().add(row);
+            getContentBox().getChildren().add(row);
         }
     }
 
@@ -78,8 +85,24 @@ public class GUIController {
         this.graphicalUI = graphicalUI;
     }
 
-    public VBox getMainVBox() {
-        return mainVBox;
+    public VBox getContentBox() {
+        return contentBox;
+    }
+
+    public void generateGameEndResult(int winner) {
+        String endText = "";
+
+        if (winner == 0) {
+            endText = "Draw!";
+        }
+        else if (winner < 0) {
+            endText = "The computer won!";
+        }
+        else {
+            endText = "You won!";
+        }
+
+        gameEndLabel.setText(endText);
     }
 
 }

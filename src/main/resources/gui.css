@@ -1,5 +1,5 @@
 .playAreaSquare {
-    -fx-background-color: black;
+    -fx-background-color: #2a1616;
     -fx-stroke: red;
     -fx-stroke-width: 5;
 }
@@ -11,4 +11,9 @@
 .playerMoves {
     -fx-font-size: 120;
     -fx-text-fill: blue;
+}
+
+#infoBox {
+    -fx-background-color: #6c6262;
+    -fx-font-size: 25;
 }

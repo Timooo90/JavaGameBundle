@@ -13,6 +13,7 @@ public class TicTacToe {
     private int[][] gameBoard;
     private boolean playerTurn = true;
     private boolean gameOver = false;
+    private int winner = 0;
 
     public TicTacToe(GUIController controller) {
         this.controller = controller;
@@ -21,6 +22,10 @@ public class TicTacToe {
 
     public void setGameBoard(int[][] gameBoard) {
         this.gameBoard = gameBoard;
+    }
+
+    public int getWinner() {
+        return winner;
     }
 
     public int[][] getGameBoard() {
@@ -104,6 +109,16 @@ public class TicTacToe {
         return freeCoordinates;
     }
 
+
+    private boolean isGameOver() {
+        if (isGameBoardFull() || rowCheck() || columnCheck() || diagonalCheck() || antiDiagonalCheck()) {
+            gameOver = true;
+            controller.generateGameEndResult(winner);
+            return true;
+        }
+        return false;
+    }
+
     private boolean isGameBoardFull() {
         for (int i = 0; i < gameBoard.length; i++){
             for (int j = 0; j < gameBoard.length; j++) {
@@ -112,21 +127,14 @@ public class TicTacToe {
                 }
             }
         }
-        System.out.println("Board is full!");
         return true;
-    }
-
-    private boolean isGameOver() {
-        if (isGameBoardFull() || rowCheck() || columnCheck() || diagonalCheck() || antiDiagonalCheck()) {
-            return true;
-        }
-        return false;
     }
 
     private boolean rowCheck() {
         for (int i = 0; i < gameBoard.length; i++) {
             int rowSum = Arrays.stream(gameBoard[i]).sum();
             if (rowSum == gameBoard.length || rowSum == -gameBoard.length) {
+                winner = rowSum;
                 return true;
             }
         }
@@ -141,6 +149,7 @@ public class TicTacToe {
             }
 
             if (columnSum == gameBoard.length || columnSum == -gameBoard.length) {
+                winner = columnSum;
                 return true;
             }
         }
@@ -154,6 +163,7 @@ public class TicTacToe {
             diagonalSum += gameBoard[i][i];
         }
         if (diagonalSum == gameBoard.length || diagonalSum == -gameBoard.length) {
+            winner = diagonalSum;
             return true;
         }
 
@@ -173,6 +183,7 @@ public class TicTacToe {
         }
 
         if (antiDiagonalSum == gameBoard.length || antiDiagonalSum == -gameBoard.length) {
+            winner = antiDiagonalSum;
             return true;
         }
 
