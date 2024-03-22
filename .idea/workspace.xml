@@ -10,8 +10,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUIController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/TicTacToe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/TicTacToe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

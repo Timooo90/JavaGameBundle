@@ -8,6 +8,10 @@ public class GUIController {
     private TicTacToe game;
     private GUI graphicalUI;
 
+    public GUIController() {
+        System.out.println("I've been created!");
+    }
+
     public TicTacToe getGame() {
         return game;
     }
@@ -31,9 +35,8 @@ public class GUIController {
         if (clicked.getClass().equals(Rectangle.class)) {
             Rectangle rectangle = (Rectangle)clicked;
 
-            System.out.println(rectangle.getId());
+            game.handleMouseClick(rectangle.getId());
         }
     }
-
 
 }

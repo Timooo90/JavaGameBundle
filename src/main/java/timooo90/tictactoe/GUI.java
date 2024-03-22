@@ -14,23 +14,52 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GUI extends Application {
+    private GUIController controller;
+    private TicTacToe game;
     private Stage primaryStage;
     private int[][] gameBoard;
+
 
     public void main() {
         launch();
     }
 
+    public int[][] getGameBoard() {
+        return gameBoard;
+    }
+
+    public GUIController getController() {
+        return controller;
+    }
+
+    public void setGameBoard(int[][] gameBoard) {
+        this.gameBoard = gameBoard;
+    }
+
+    public void setController(GUIController controller) {
+        this.controller = controller;
+    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        this.game = new TicTacToe();
+
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI.fxml"));
 
         Parent root = loader.load();
 
+        setController(loader.getController());
+
+        controller.setGraphicalUI(this);
+        controller.setGame(this.game);
+
+        System.out.println(controller.getGame());
+
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+
+
 
         /*
         Scene scene = new Scene(createPlayArea(3));
@@ -74,7 +103,5 @@ public class GUI extends Application {
         return results;
     }
 
-    public void setGameBoard(int[][] gameBoard) {
-        this.gameBoard = gameBoard;
-    }
+
 }

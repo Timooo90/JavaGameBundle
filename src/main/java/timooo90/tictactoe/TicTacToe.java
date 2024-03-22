@@ -2,39 +2,48 @@ package timooo90.tictactoe;
 
 import timooo90.tictactoe.utilities.Utility;
 
-import java.util.Arrays;
 
 public class TicTacToe {
     private int[][] gameBoard;
     private boolean playerTurn = true;
 
     public TicTacToe() {
-        initializeBoard();
+        initializeEmptyBoard();
     }
 
-    private void initializeBoard() {
-        gameBoard = Utility.getEmptyBoard();
-    }
-    
-
-    public void printGameBoard() {
-
-        for (int row = 0; row < gameBoard.length; row++) {
-            System.out.println(Arrays.toString(gameBoard[row]));
-            /*
-            for (int column = 0; column < gameBoard[0].length; column++) {
-                System.out.println(gameBoard[row][column]);
-            }
-
-             */
-        }
+    public void setGameBoard(int[][] gameBoard) {
+        this.gameBoard = gameBoard;
     }
 
     public int[][] getGameBoard() {
         return gameBoard;
     }
 
-    public void setGameBoard(int[][] gameBoard) {
-        this.gameBoard = gameBoard;
+
+    private void initializeEmptyBoard() {
+        setGameBoard(Utility.getEmptyBoard());
     }
+
+
+
+    public void handleMouseClick(String coordinates) {
+        System.out.println(coordinates);
+        if (coordinates.length() != 2) { return; }
+
+        int x = Character.getNumericValue(coordinates.charAt(0));
+        int y = Character.getNumericValue(coordinates.charAt(1));
+
+
+        if (gameBoard[x][y] == 0) {
+            gameBoard[x][y] = 1;
+        }
+
+
+
+    }
+
+
+
+
+
 }
