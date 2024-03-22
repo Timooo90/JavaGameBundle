@@ -24,10 +24,6 @@ public class TicTacToe {
         this.gameBoard = gameBoard;
     }
 
-    public int getWinner() {
-        return winner;
-    }
-
     public int[][] getGameBoard() {
         return gameBoard;
     }

@@ -14,8 +14,6 @@ public class GUIController {
     @FXML
     private VBox contentBox;
     @FXML
-    private VBox infoBox;
-    @FXML
     private Label gameEndLabel;
     HashMap<String, Label> squareLabels;
     private TicTacToe game;

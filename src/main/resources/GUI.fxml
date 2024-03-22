@@ -31,11 +31,9 @@
                 </VBox>
                 <VBox fx:id="contentBox">
                     <children>
-
                     </children>
                 </VBox>
             </children>
         </VBox>
-
     </children>
 </GridPane>
