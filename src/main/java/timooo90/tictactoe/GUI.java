@@ -61,6 +61,7 @@ public class GUI extends Application {
     }
 
 
+    /*
     private VBox createPlayArea(int boardSideLength) {
         VBox results = new VBox();
         List<Rectangle> playAreaSquares = new ArrayList<Rectangle>();
@@ -88,4 +89,5 @@ public class GUI extends Application {
         }
         return results;
     }
+     */
 }
