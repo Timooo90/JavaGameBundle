@@ -10,9 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public class GUIController {
     @FXML

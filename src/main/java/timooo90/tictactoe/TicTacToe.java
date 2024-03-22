@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 
 public class TicTacToe {
+    private AIPlayStyle aiPlayStyle = AIPlayStyle.RANDOM;
     private int[][] gameBoard;
     private boolean playerTurn = true;
 
@@ -33,20 +34,37 @@ public class TicTacToe {
     }
 
 
-
     public int[][] handleMouseClick(String coordinates) {
-        if (coordinates.length() != 2) { return gameBoard; }
+        if (coordinates.length() != 2 || !playerTurn) { return gameBoard; }
 
         int x = Character.getNumericValue(coordinates.charAt(0));
         int y = Character.getNumericValue(coordinates.charAt(1));
 
         if (gameBoard[x][y] == 0) {
             gameBoard[x][y] = 1;
+            playerTurn = false;
         }
 
         printGameBoardToConsole();
 
         return gameBoard;
+    }
+
+    private void handleAITurn() {
+        switch (aiPlayStyle) {
+            case RANDOM: AIRandomMove();
+            case OPTIMIZED: AIOptimizedMove();
+        }
+
+        playerTurn = true;
+    }
+
+    private void AIRandomMove() {
+
+    }
+
+    private void AIOptimizedMove() {
+
     }
 
 }
