@@ -60,17 +60,6 @@ public class GUI extends Application {
         primaryStage.show();
 
 
-
-        /*
-        Scene scene = new Scene(createPlayArea(3));
-
-        scene.getStylesheets().add("gui.css");
-
-
-        primaryStage.setScene(scene);
-
-        primaryStage.show();
-         */
     }
 
 
@@ -99,9 +88,6 @@ public class GUI extends Application {
             }
             results.getChildren().add(row);
         }
-
         return results;
     }
-
-
 }

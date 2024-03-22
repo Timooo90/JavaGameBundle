@@ -38,12 +38,6 @@ public class TicTacToe {
             gameBoard[x][y] = 1;
         }
 
-
-
     }
-
-
-
-
 
 }
