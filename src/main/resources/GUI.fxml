@@ -11,65 +11,7 @@
     <children>
         <VBox fx:id="mainVBox">
             <children>
-                <!--
-                <HBox>
-                    <children>
-                        <StackPane>
-                            <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="00" onMouseClicked="#squareClicked">
-                            </Rectangle>
-                            <Label fx:id="L00" styleClass="playerMoves">X</Label>
-                        </StackPane>
-                        <StackPane>
-                            <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="01" onMouseClicked="#squareClicked">
-                            </Rectangle>
-                            <Label styleClass="playerMoves">X</Label>
-                        </StackPane>
-                        <StackPane>
-                            <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="02" onMouseClicked="#squareClicked">
-                            </Rectangle>
-                            <Label styleClass="playerMoves">X</Label>
-                        </StackPane>
-                    </children>
-                </HBox>
-                <HBox>
-                    <children>
-                        <StackPane>
-                            <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="10" onMouseClicked="#squareClicked">
-                            </Rectangle>
-                            <Label styleClass="playerMoves">X</Label>
-                        </StackPane>
-                        <StackPane>
-                            <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="11" onMouseClicked="#squareClicked">
-                            </Rectangle>
-                            <Label styleClass="playerMoves">X</Label>
-                        </StackPane>
-                        <StackPane>
-                            <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="12" onMouseClicked="#squareClicked">
-                            </Rectangle>
-                            <Label styleClass="playerMoves">X</Label>
-                        </StackPane>
-                    </children>
-                </HBox>
-                <HBox>
-                    <children>
-                        <StackPane>
-                            <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="20" onMouseClicked="#squareClicked">
-                            </Rectangle>
-                            <Label styleClass="playerMoves">X</Label>
-                        </StackPane>
-                        <StackPane>
-                            <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="21" onMouseClicked="#squareClicked">
-                            </Rectangle>
-                            <Label styleClass="playerMoves">X</Label>
-                        </StackPane>
-                        <StackPane>
-                            <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="22" onMouseClicked="#squareClicked">
-                            </Rectangle>
-                            <Label styleClass="playerMoves">X</Label>
-                        </StackPane>
-                    </children>
-                </HBox>
-                -->
+
             </children>
         </VBox>
     </children>

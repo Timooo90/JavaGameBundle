@@ -21,10 +21,6 @@ public class GUIController {
     private GUI graphicalUI;
 
 
-    public TicTacToe getGame() {
-        return game;
-    }
-
     public void setGame(TicTacToe game) {
         this.game = game;
         squareLabels = new HashMap<>();
@@ -84,10 +80,6 @@ public class GUIController {
         label.setText(value);
     }
 
-    public GUI getGraphicalUI() {
-        return graphicalUI;
-    }
-
     public void setGraphicalUI(GUI graphicalUI) {
         this.graphicalUI = graphicalUI;
     }
@@ -96,20 +88,4 @@ public class GUIController {
         return mainVBox;
     }
 
-    public void setMainVBox(VBox mainVBox) {
-        this.mainVBox = mainVBox;
-    }
-
-    @FXML
-    private void squareClicked(MouseEvent event) {
-        Object clicked = event.getSource();
-
-        if (clicked.getClass().equals(Rectangle.class)) {
-            Rectangle rectangle = (Rectangle)clicked;
-
-            int[][] newBoardState = game.handleMouseClick(rectangle.getId());
-
-            graphicalUI.setGameBoard(newBoardState);
-        }
-    }
 }

@@ -45,7 +45,9 @@ public class TicTacToe {
             playerTurn = false;
         }
 
-        printGameBoardToConsole();
+        //printGameBoardToConsole();
+
+        if (!playerTurn && !isGameBoardFull()) { handleAITurn(); }
 
         return gameBoard;
     }
@@ -65,6 +67,18 @@ public class TicTacToe {
 
     private void AIOptimizedMove() {
 
+    }
+
+    private boolean isGameBoardFull() {
+        for (int i = 0; i < gameBoard.length; i++){
+            for (int j = 0; j < gameBoard.length; j++) {
+                if (gameBoard[i][j] == 0) {
+                    return false;
+                }
+            }
+        }
+        System.out.println("Board is full!");
+        return true;
     }
 
 }
