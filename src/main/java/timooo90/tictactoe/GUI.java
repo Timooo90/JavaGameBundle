@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 
 public class GUI extends Application {
     private GUIController controller;
-    private TicTacToe game;
 
     public void main() {
         launch();
@@ -20,7 +19,6 @@ public class GUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        this.game = new TicTacToe();
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/GUI.fxml"));
 
@@ -29,7 +27,7 @@ public class GUI extends Application {
         setController(loader.getController());
 
         controller.setGraphicalUI(this);
-        controller.setGame(this.game);
+        controller.startNewGame();
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);

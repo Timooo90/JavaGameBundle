@@ -1,9 +1,7 @@
 package timooo90.tictactoe;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
@@ -21,8 +19,8 @@ public class GUIController {
     private GUI graphicalUI;
 
 
-    public void setGame(TicTacToe game) {
-        this.game = game;
+    public void startNewGame() {
+        this.game = new TicTacToe();
         squareLabels = new HashMap<>();
         generatePlayAreaSquares();
     }
@@ -55,7 +53,6 @@ public class GUIController {
 
         rectangle.setOnMouseClicked(mouseEvent -> {
             if (mouseEvent.getButton().equals(MouseButton.PRIMARY)) {
-                System.out.println("Clicked on " + rectangle.getId());
                 game.handleMouseClick(rectangle.getId());
 
                 setSquareLabelValue("L" + rectangle.getId(), "X");

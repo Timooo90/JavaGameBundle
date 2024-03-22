@@ -1,7 +1,5 @@
 package timooo90.tictactoe;
-
 import timooo90.tictactoe.utilities.Utility;
-
 import java.util.Arrays;
 
 
