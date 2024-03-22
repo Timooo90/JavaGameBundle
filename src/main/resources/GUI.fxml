@@ -2,44 +2,41 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.ColumnConstraints ?>
-<?import javafx.scene.layout.RowConstraints ?>
-
-
 <?import javafx.scene.shape.Rectangle?>
+
+
+
 <GridPane minWidth="-Infinity" minHeight="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timooo90.tictactoe.GUIController" stylesheets="@gui.css">
-
-
     <children>
         <VBox>
             <children>
                 <HBox>
                     <children>
-                        <Rectangle styleClass="playAreaSquare" width="200" height="200">
+                        <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="00" onMouseClicked="#squareClicked">
                         </Rectangle>
-                        <Rectangle styleClass="playAreaSquare" width="200" height="200">
+                        <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="01" onMouseClicked="#squareClicked">
                         </Rectangle>
-                        <Rectangle styleClass="playAreaSquare" width="200" height="200">
-                        </Rectangle>
-                    </children>
-                </HBox>
-                <HBox>
-                    <children>
-                        <Rectangle styleClass="playAreaSquare" width="200" height="200">
-                        </Rectangle>
-                        <Rectangle styleClass="playAreaSquare" width="200" height="200">
-                        </Rectangle>
-                        <Rectangle styleClass="playAreaSquare" width="200" height="200">
+                        <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="02" onMouseClicked="#squareClicked">
                         </Rectangle>
                     </children>
                 </HBox>
                 <HBox>
                     <children>
-                        <Rectangle styleClass="playAreaSquare" width="200" height="200">
+                        <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="10" onMouseClicked="#squareClicked">
                         </Rectangle>
-                        <Rectangle styleClass="playAreaSquare" width="200" height="200">
+                        <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="11" onMouseClicked="#squareClicked">
                         </Rectangle>
-                        <Rectangle styleClass="playAreaSquare" width="200" height="200">
+                        <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="12" onMouseClicked="#squareClicked">
+                        </Rectangle>
+                    </children>
+                </HBox>
+                <HBox>
+                    <children>
+                        <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="20" onMouseClicked="#squareClicked">
+                        </Rectangle>
+                        <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="21" onMouseClicked="#squareClicked">
+                        </Rectangle>
+                        <Rectangle styleClass="playAreaSquare" width="200" height="200" fx:id="22" onMouseClicked="#squareClicked">
                         </Rectangle>
                     </children>
                 </HBox>
@@ -47,23 +44,3 @@
         </VBox>
     </children>
 </GridPane>
-
-
-<!--
-<VBox>
-    <VBox>
-        <HBox prefHeight="100" prefWidth="100">
-            <style>
-                -fx-background: black;
-            </style>
-        </HBox>
-        <HBox></HBox>
-        <HBox></HBox>
-    </VBox>
-    <VBox>
-        <HBox></HBox>
-        <HBox></HBox>
-        <HBox></HBox>
-    </VBox>
-</VBox>
--->
