@@ -1,4 +1,5 @@
 package timooo90.tictactoe;
+import timooo90.tictactoe.utilities.BoardHandler;
 import timooo90.tictactoe.utilities.Utility;
 
 import java.util.ArrayList;
@@ -7,6 +8,7 @@ import java.util.Random;
 
 
 public class TicTacToe {
+    private static BoardHandler boardHandler;
     private GUIController controller;
     private Random randomNumberGenerator = new Random();
     private AIPlayStyle aiPlayStyle = AIPlayStyle.RANDOM;

@@ -1,20 +1,19 @@
 package timooo90.tictactoe.utilities;
 import java.lang.Math;
 import java.util.HashMap;
-import java.util.StringJoiner;
 
 
 public final class Utility {
     private static int defaultSideLength = 3;
-    private static HashMap<String, Board> boards = new HashMap<>();
 
+    /*
     public static void main(String[] args) {
         int[][] gameBoard = getEmptyBoard();
         Board board = new Board(gameBoard, true);
 
         System.out.println(Board.numberOfBoards);
-
     }
+     */
 
     public static int[][] getEmptyBoard() {
         return new int[defaultSideLength][defaultSideLength];
@@ -23,7 +22,6 @@ public final class Utility {
     public static int[][] getEmptyBoard(int sideLength) {
         return new int[sideLength][sideLength];
     }
-
 
     public static String boardToDictionaryKey(int[][] gameBoard) {
         String[] boardPieces = new String[gameBoard.length * gameBoard.length];
