@@ -45,20 +45,18 @@ public class BoardHandler {
 
         Board bestBoard;
 
-        if (board.getChildren().size() > 0) {
-            bestBoard = board.getChildren().get(0);
-        }
-
         for (Board childBoard: board.getChildren()) {
             if (childBoard.winner == player) {
                 bestBoard = childBoard;
-                break;
+                return Utility.getNextCoordinatesFromBoardDifference(board.gameBoard, bestBoard.gameBoard);
+            }
+            else if (childBoard.winner == -player) {
+                continue;
             }
             GameResult result = new GameResult();
             results.add(result);
 
             result.setBoard(childBoard);
-            result.setDepth(result.getDepth() + 1);
 
             findBestBoard(childBoard, player, result);
         }
@@ -66,24 +64,37 @@ public class BoardHandler {
         GameResult optimalResult = results.get(0);
 
         for (GameResult result : results) {
-            if (result.getBoard().getWinner() == player && result.getDepth() < optimalResult.getDepth()) {
+            if (result.isAIWinReached() && result.getAIWinDepth() < result.getHumanWinDepth()) {
+                optimalResult = result;
+            }
+            else if (result.isDrawReached() && result.getDrawDepth() < result.getHumanWinDepth() && !optimalResult.isAIWinReached()) {
                 optimalResult = result;
             }
         }
 
+        bestBoard = optimalResult.getBoard();
 
-        return Utility.getNextCoordinatesFromBoardDifference(board.gameBoard, optimalResult.getBoard().gameBoard);
+
+        return Utility.getNextCoordinatesFromBoardDifference(board.gameBoard, bestBoard.gameBoard);
     }
 
     public void findBestBoard(Board board, int player, GameResult result) {
 
         for (Board childBoard: board.getChildren()) {
-            if (childBoard.winner == player) {
-                result.setDepth(result.getDepth() + 1);
-                break;
+
+            switch (childBoard.winner) {
+                case -1: {
+                    result.setAIWinReached(true);
+                }
+                case 1: {
+                    result.setHumanWinReached(true);
+                }
+                case 0: {
+                    result.setDrawReached(true);
+                }
             }
 
-            result.setDepth(result.getDepth() + 1);
+            result.increaseDepth();
 
             findBestBoard(childBoard, player, result);
         }
@@ -136,8 +147,11 @@ public class BoardHandler {
                 // Check rows.
                 int rowSum = Arrays.stream(gameBoard[i]).sum();
 
+                System.out.println("RowSum is ");
+                System.out.println(rowSum);
+
                 if (rowSum == 3 || rowSum == -3) {
-                    setWinner(rowSum);
+                    setWinner(rowSum/3);
                     gameEndPosition = true;
                     return;
                 }
@@ -153,19 +167,19 @@ public class BoardHandler {
                 }
 
                 if (columnSum == 3 || columnSum == -3) {
-                    setWinner(columnSum);
+                    setWinner(columnSum/3);
                     gameEndPosition = true;
                     return;
                 }
 
                 if (diagonalSum == 3 || diagonalSum == -3) {
-                    setWinner(diagonalSum);
+                    setWinner(diagonalSum/3);
                     gameEndPosition = true;
                     return;
                 }
 
                 if (antiDiagonalSum == 3 || antiDiagonalSum == -3) {
-                    setWinner(antiDiagonalSum);
+                    setWinner(antiDiagonalSum/3);
                     gameEndPosition = true;
                     return;
                 }
