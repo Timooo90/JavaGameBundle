@@ -3,6 +3,7 @@ package timooo90.tictactoe.utilities;
 import java.util.ArrayList;
 
 public class Board {
+    public static int numberOfBoards = 0;
     private int[][] gameBoard;
     private boolean humanTurn = true;
     private String key;
@@ -21,7 +22,8 @@ public class Board {
     }
 
     private void calculateScore() {
-
+        numberOfBoards++;
+        System.out.println(this.key);
     }
 
     private int[][] getDeepCopyOfGameBoard() {

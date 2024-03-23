@@ -1,12 +1,18 @@
 package timooo90.tictactoe.utilities;
 import java.lang.Math;
+import java.util.HashMap;
+import java.util.StringJoiner;
 
 
 public final class Utility {
     private static int defaultSideLength = 3;
+    private static HashMap<String, Board> boards = new HashMap<>();
 
     public static void main(String[] args) {
         int[][] gameBoard = getEmptyBoard();
+        Board board = new Board(gameBoard, true);
+
+        System.out.println(Board.numberOfBoards);
 
     }
 
@@ -20,26 +26,29 @@ public final class Utility {
 
 
     public static String boardToDictionaryKey(int[][] gameBoard) {
-        StringBuilder stringBuilder = new StringBuilder();
+        String[] boardPieces = new String[gameBoard.length * gameBoard.length];
 
+        int piecesIndex = 0;
         for (int i = 0; i < gameBoard.length; i++) {
             for (int j = 0; j < gameBoard.length; j++) {
-                stringBuilder.append(gameBoard[i][j]);
+                boardPieces[piecesIndex] = String.valueOf(gameBoard[i][j]);
+                piecesIndex++;
             }
         }
-
-        return stringBuilder.toString();
+        return String.join(";", boardPieces);
     }
 
     public static int[][] keyToGameBoard(String key) {
         int sideLength = (int)Math.sqrt(key.length());
         int[][] newBoard = new int[sideLength][sideLength];
 
-        int stringIndex = 0;
+        String[] keyPieces = key.split(";");
+
+        int pieceIndex = 0;
         for (int i = 0; i < sideLength; i++) {
             for (int j = 0; j < sideLength; j++) {
-                newBoard[i][j] = key.charAt(stringIndex);
-                stringIndex++;
+                newBoard[i][j] = Integer.parseInt(keyPieces[pieceIndex]);
+                pieceIndex++;
             }
         }
         return newBoard;
