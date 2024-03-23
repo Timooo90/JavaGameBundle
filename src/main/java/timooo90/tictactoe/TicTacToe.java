@@ -107,7 +107,7 @@ public class TicTacToe {
 
 
     private boolean isGameOver() {
-        if (isGameBoardFull() || rowCheck() || columnCheck() || diagonalCheck() || antiDiagonalCheck()) {
+        if (rowCheck() || columnCheck() || diagonalCheck() || antiDiagonalCheck() || isGameBoardFull()) {
             gameOver = true;
             controller.generateGameEndResult(winner);
             return true;

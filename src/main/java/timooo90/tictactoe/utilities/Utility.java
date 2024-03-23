@@ -5,7 +5,7 @@ public final class Utility {
     private static int defaultSideLength = 3;
 
     public static int[][] getEmptyBoard() {
-        return new int[3][3];
+        return new int[defaultSideLength][defaultSideLength];
     }
 
     public static int[][] getEmptyBoard(int sideLength) {
