@@ -8,10 +8,13 @@ public class BoardHandler {
     private static int boardCount;
     private HashMap<String, Board> boards = new HashMap<>();
 
+    public HashMap<String, Board> getBoards() {
+        return boards;
+    }
+
     public static void main(String[] args) {
         BoardHandler boardHandler = new BoardHandler();
         boardHandler.initializeBoards();
-        System.out.println(boardCount);
     }
 
     public void initializeBoards() {
@@ -29,9 +32,63 @@ public class BoardHandler {
         boardCount++;
 
         if (!board.isGameEndPosition()) {
-            board.generateChildren();
+            board.generateChildren(board);
         }
     }
+
+    public String findBestMoveCoordinates(int[][] gameBoard, int player) {
+        String key = Utility.boardToDictionaryKey(gameBoard);
+
+        Board board = getBoards().get(key);
+
+        ArrayList<GameResult> results = new ArrayList<>();
+
+        Board bestBoard;
+
+        if (board.getChildren().size() > 0) {
+            bestBoard = board.getChildren().get(0);
+        }
+
+        for (Board childBoard: board.getChildren()) {
+            if (childBoard.winner == player) {
+                bestBoard = childBoard;
+                break;
+            }
+            GameResult result = new GameResult();
+            results.add(result);
+
+            result.setBoard(childBoard);
+            result.setDepth(result.getDepth() + 1);
+
+            findBestBoard(childBoard, player, result);
+        }
+
+        GameResult optimalResult = results.get(0);
+
+        for (GameResult result : results) {
+            if (result.getBoard().getWinner() == player && result.getDepth() < optimalResult.getDepth()) {
+                optimalResult = result;
+            }
+        }
+
+
+        return Utility.getNextCoordinatesFromBoardDifference(board.gameBoard, optimalResult.getBoard().gameBoard);
+    }
+
+    public void findBestBoard(Board board, int player, GameResult result) {
+
+        for (Board childBoard: board.getChildren()) {
+            if (childBoard.winner == player) {
+                result.setDepth(result.getDepth() + 1);
+                break;
+            }
+
+            result.setDepth(result.getDepth() + 1);
+
+            findBestBoard(childBoard, player, result);
+        }
+    }
+
 
     public class Board {
         private int[][] gameBoard;
@@ -50,6 +107,10 @@ public class BoardHandler {
             this.children = new ArrayList<>();
 
             checkForEndPosition();
+        }
+
+        public ArrayList<Board> getChildren() {
+            return children;
         }
 
         public boolean isGameEndPosition() {
@@ -124,7 +185,7 @@ public class BoardHandler {
             return newGameBoard;
         }
 
-        public void generateChildren() {
+        public void generateChildren(Board parentBoard) {
             int player = humanTurn ? 1 : -1;
 
             for (int i = 0; i < gameBoard.length; i++) {
@@ -134,6 +195,8 @@ public class BoardHandler {
                         newGameBoard[i][j] = player;
 
                         Board newBoard = new Board(newGameBoard, !humanTurn);
+
+                        parentBoard.getChildren().add(newBoard);
 
                         if (!boardExistsAlready(newBoard.key)) {
                             addNewBoard(key, newBoard);

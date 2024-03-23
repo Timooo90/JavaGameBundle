@@ -1,19 +1,9 @@
 package timooo90.tictactoe.utilities;
 import java.lang.Math;
-import java.util.HashMap;
 
 
 public final class Utility {
     private static int defaultSideLength = 3;
-
-    /*
-    public static void main(String[] args) {
-        int[][] gameBoard = getEmptyBoard();
-        Board board = new Board(gameBoard, true);
-
-        System.out.println(Board.numberOfBoards);
-    }
-     */
 
     public static int[][] getEmptyBoard() {
         return new int[defaultSideLength][defaultSideLength];
@@ -50,6 +40,19 @@ public final class Utility {
             }
         }
         return newBoard;
+    }
+
+    public static String getNextCoordinatesFromBoardDifference(int[][] current, int[][] next) {
+        String coordinates = "";
+        for (int i = 0; i < current.length; i++) {
+            for (int j = 0; j < current.length; j++) {
+                if (current[i][j] != next[i][j]) {
+                    coordinates = String.valueOf(i) + String.valueOf(j);
+                }
+            }
+        }
+
+        return coordinates;
     }
 
 }

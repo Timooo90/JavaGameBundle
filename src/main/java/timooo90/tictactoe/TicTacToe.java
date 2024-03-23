@@ -8,10 +8,10 @@ import java.util.Random;
 
 
 public class TicTacToe {
-    private static BoardHandler boardHandler;
+    private static BoardHandler boardHandler = new BoardHandler();
     private GUIController controller;
     private Random randomNumberGenerator = new Random();
-    private AIPlayStyle aiPlayStyle = AIPlayStyle.RANDOM;
+    private AIPlayStyle aiPlayStyle = AIPlayStyle.OPTIMIZED;
     private int[][] gameBoard;
     private boolean playerTurn = true;
     private boolean gameOver = false;
@@ -20,6 +20,8 @@ public class TicTacToe {
     public TicTacToe(GUIController controller) {
         this.controller = controller;
         initializeEmptyBoard();
+
+        boardHandler.initializeBoards();
     }
 
     public void setGameBoard(int[][] gameBoard) {
@@ -90,7 +92,7 @@ public class TicTacToe {
     }
 
     private void selectAIOptimizedMove() {
-
+        handleAIMove(boardHandler.findBestMoveCoordinates(gameBoard, -1));
     }
 
 
