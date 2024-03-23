@@ -16,6 +16,13 @@ public class BoardHandler {
         BoardHandler boardHandler = new BoardHandler();
         boardHandler.initializeBoards();
 
+        System.out.println(boardCount);
+
+        Board board = boardHandler.getBoards().get("0;0;0;0;0;0;0;1;0");
+
+        boardHandler.findBestMoveCoordinates(board.gameBoard, -1);
+
+        System.out.println(Utility.boardToDictionaryKey(board.gameBoard));
     }
 
     public void initializeBoards() {
@@ -42,49 +49,35 @@ public class BoardHandler {
 
         Board board = getBoards().get(key);
 
-
         ArrayList<GameResult> results = new ArrayList<>();
 
         Board bestBoard;
 
+        System.out.println("Children of child of child");
+        System.out.println(board.getChildren().get(0).getChildren().get(0).getChildren());
+
         for (Board childBoard: board.getChildren()) {
+            System.out.println(childBoard.getChildren());
             if (childBoard.winner == player) {
                 bestBoard = childBoard;
+                System.out.println("Found winning play!");
                 return Utility.getNextCoordinatesFromBoardDifference(board.gameBoard, bestBoard.gameBoard);
             }
-            else if (childBoard.winner == -player) {
-                continue;
-            }
+
             GameResult result = new GameResult();
             results.add(result);
 
             result.setBoard(childBoard);
 
-            findBestBoard(childBoard, player, result);
+            findBestBoard(childBoard, result);
         }
 
-        if (results.size() < 1) {
-            return Utility.getNextCoordinatesFromBoardDifference(board.gameBoard, gameBoard);
-        }
+        GameResult bestResult = getBestResult(results);
 
-        GameResult optimalResult = results.get(0);
-
-        for (GameResult result : results) {
-            if (result.isAIWinReached() && result.getAIWinDepth() < result.getHumanWinDepth()) {
-                optimalResult = result;
-            }
-            else if (result.isDrawReached() && result.getDrawDepth() < result.getHumanWinDepth() && !optimalResult.isAIWinReached()) {
-                optimalResult = result;
-            }
-        }
-
-        bestBoard = optimalResult.getBoard();
-
-
-        return Utility.getNextCoordinatesFromBoardDifference(board.gameBoard, bestBoard.gameBoard);
+        return Utility.getNextCoordinatesFromBoardDifference(gameBoard, bestResult.getBoard().gameBoard);
     }
 
-    public void findBestBoard(Board board, int player, GameResult result) {
+    public void findBestBoard(Board board, GameResult result) {
 
         for (Board childBoard: board.getChildren()) {
 
@@ -102,16 +95,34 @@ public class BoardHandler {
 
             result.increaseDepth();
 
-            findBestBoard(childBoard, player, result);
+            findBestBoard(childBoard, result);
         }
     }
 
+    public GameResult getBestResult(ArrayList<GameResult> results) {
+        GameResult optimalResult = results.get(0);
+        System.out.println(results);
+
+        for (GameResult result : results) {
+            System.out.println("AI win depth: " + result.getAIWinDepth() + " | Human win depth: " + result.getHumanWinDepth() + " | Draw depth: " + result.getDrawDepth());
+            System.out.println(Utility.boardToDictionaryKey(result.getBoard().gameBoard));
+            if (result.isAIWinReached() && result.getAIWinDepth() < result.getHumanWinDepth() && result.getAIWinDepth() < optimalResult.getAIWinDepth()) {
+                optimalResult = result;
+            }
+            else if (result.isDrawReached() && result.getDrawDepth() < result.getHumanWinDepth()) {
+                optimalResult = result;
+                System.out.println("Optimal result: " + Utility.boardToDictionaryKey(optimalResult.getBoard().gameBoard));
+            }
+        }
+
+        return optimalResult;
+    }
 
     public class Board {
         private int[][] gameBoard;
         private boolean humanTurn;
         private String key;
-        private int winner = 0;
+        private int winner = -99;
         private int score = 0;
         private boolean gameEndPosition = false;
 
