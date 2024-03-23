@@ -1,4 +1,5 @@
 package timooo90.tictactoe.utilities;
+import java.lang.Math;
 
 
 public final class Utility {
@@ -31,9 +32,17 @@ public final class Utility {
     }
 
     public static int[][] keyToGameBoard(String key) {
-        // Placeholder!
-        return new int[3][3];
-    }
+        int sideLength = (int)Math.sqrt(key.length());
+        int[][] newBoard = new int[sideLength][sideLength];
 
+        int stringIndex = 0;
+        for (int i = 0; i < sideLength; i++) {
+            for (int j = 0; j < sideLength; j++) {
+                newBoard[i][j] = key.charAt(stringIndex);
+                stringIndex++;
+            }
+        }
+        return newBoard;
+    }
 
 }
