@@ -15,6 +15,7 @@ public class BoardHandler {
     public static void main(String[] args) {
         BoardHandler boardHandler = new BoardHandler();
         boardHandler.initializeBoards();
+
     }
 
     public void initializeBoards() {
@@ -41,6 +42,7 @@ public class BoardHandler {
 
         Board board = getBoards().get(key);
 
+
         ArrayList<GameResult> results = new ArrayList<>();
 
         Board bestBoard;
@@ -59,6 +61,10 @@ public class BoardHandler {
             result.setBoard(childBoard);
 
             findBestBoard(childBoard, player, result);
+        }
+
+        if (results.size() < 1) {
+            return Utility.getNextCoordinatesFromBoardDifference(board.gameBoard, gameBoard);
         }
 
         GameResult optimalResult = results.get(0);
@@ -147,8 +153,6 @@ public class BoardHandler {
                 // Check rows.
                 int rowSum = Arrays.stream(gameBoard[i]).sum();
 
-                System.out.println("RowSum is ");
-                System.out.println(rowSum);
 
                 if (rowSum == 3 || rowSum == -3) {
                     setWinner(rowSum/3);
@@ -213,7 +217,7 @@ public class BoardHandler {
                         parentBoard.getChildren().add(newBoard);
 
                         if (!boardExistsAlready(newBoard.key)) {
-                            addNewBoard(key, newBoard);
+                            addNewBoard(newBoard.key, newBoard);
                         }
                     }
                 }
