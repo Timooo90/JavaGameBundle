@@ -1,14 +1,15 @@
 package timooo90.tictactoe;
-import timooo90.tictactoe.utilities.BoardHandler;
-import timooo90.tictactoe.utilities.Utility;
+import timooo90.tictactoe.AIOpponent.AIPlayStyle;
+import timooo90.tictactoe.AIOpponent.AdvancedAI;
+import timooo90.tictactoe.GUI.GUIController;
+import timooo90.tictactoe.utilities.TicTacToeHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 
 public class TicTacToe {
-    private static BoardHandler boardHandler = new BoardHandler();
+    private static AdvancedAI advancedAI = new AdvancedAI();
     private GUIController controller;
     private Random randomNumberGenerator = new Random();
     private AIPlayStyle aiPlayStyle = AIPlayStyle.OPTIMIZED;
@@ -19,33 +20,23 @@ public class TicTacToe {
 
     public TicTacToe(GUIController controller) {
         this.controller = controller;
-        initializeEmptyBoard();
+        resetCurrentBoard();
 
-        boardHandler.initializeBoards();
-    }
-
-    public void setGameBoard(int[][] gameBoard) {
-        this.gameBoard = gameBoard;
+        advancedAI.initializeBoards();
     }
 
     public int[][] getGameBoard() {
         return gameBoard;
     }
 
-
-    private void initializeEmptyBoard() {
-        setGameBoard(Utility.getEmptyBoard());
+    private void resetCurrentBoard() {
+        gameBoard = TicTacToeHelper.getEmptyBoard();
     }
-
-    public void printGameBoardToConsole() {
-        for (int i = 0; i < gameBoard.length; i++) {
-            System.out.println(Arrays.toString(gameBoard[i]));
-        }
-    }
-
 
     public void handleMouseClick(String coordinates) {
-        if (gameOver || coordinates.length() != 2 || !playerTurn) { return; }
+        if (gameOver || coordinates.length() != 2 || !playerTurn) {
+            return;
+        }
 
         int x = Character.getNumericValue(coordinates.charAt(0));
         int y = Character.getNumericValue(coordinates.charAt(1));
@@ -54,12 +45,15 @@ public class TicTacToe {
             gameBoard[x][y] = 1;
             playerTurn = false;
             controller.setSquareLabelValue("L" + x + y, "X");
-            if (isGameOver()) {
-                return ;
-            }
+
+            checkGameEndingConditions();
+
+            if (gameOver) { return; }
         }
 
-        if (!playerTurn && !isGameBoardFull()) { handleAITurn(); }
+        if (!playerTurn && !TicTacToeHelper.isGameBoardFull(gameBoard)) {
+            handleAITurn();
+        }
     }
 
     private void handleAIMove(String coordinates) {
@@ -72,11 +66,14 @@ public class TicTacToe {
 
     private void handleAITurn() {
         switch (aiPlayStyle) {
-            case RANDOM: selectAIRandomMove();
-            case OPTIMIZED: selectAIOptimizedMove();
+            case RANDOM:
+                selectAIRandomMove();
+            case OPTIMIZED:
+                selectAIOptimizedMove();
         }
 
-        if (isGameOver()) { return; }
+        checkGameEndingConditions();
+        if (gameOver) { return; }
 
         playerTurn = true;
     }
@@ -92,14 +89,14 @@ public class TicTacToe {
     }
 
     private void selectAIOptimizedMove() {
-        handleAIMove(boardHandler.findBestMoveCoordinates(gameBoard, -1));
+        handleAIMove(advancedAI.findBestMoveCoordinates(gameBoard, -1));
     }
 
 
     private ArrayList<String> getFreeCoordinates() {
         ArrayList<String> freeCoordinates = new ArrayList<>();
 
-        for (int i = 0; i < gameBoard.length; i++){
+        for (int i = 0; i < gameBoard.length; i++) {
             for (int j = 0; j < gameBoard.length; j++) {
                 if (gameBoard[i][j] == 0) {
                     freeCoordinates.add(String.valueOf(i) + String.valueOf(j));
@@ -110,84 +107,23 @@ public class TicTacToe {
     }
 
 
-    private boolean isGameOver() {
-        if (rowCheck() || columnCheck() || diagonalCheck() || antiDiagonalCheck() || isGameBoardFull()) {
+    private boolean checkGameEndingConditions() {
+        if (TicTacToeHelper.isGameBoardFull(gameBoard)) {
             gameOver = true;
+            winner = 0;
             controller.generateGameEndResult(winner);
             return true;
         }
-        return false;
-    }
 
-    private boolean isGameBoardFull() {
-        for (int i = 0; i < gameBoard.length; i++){
-            for (int j = 0; j < gameBoard.length; j++) {
-                if (gameBoard[i][j] == 0) {
-                    return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    private boolean rowCheck() {
-        for (int i = 0; i < gameBoard.length; i++) {
-            int rowSum = Arrays.stream(gameBoard[i]).sum();
-            if (rowSum == gameBoard.length || rowSum == -gameBoard.length) {
-                winner = rowSum;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean columnCheck() {
-        for (int i = 0; i < gameBoard.length; i++) {
-            int columnSum = 0;
-            for (int j = 0; j < gameBoard.length; j++) {
-                columnSum += gameBoard[j][i];
-            }
-
-            if (columnSum == gameBoard.length || columnSum == -gameBoard.length) {
-                winner = columnSum;
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private boolean diagonalCheck() {
-        int diagonalSum = 0;
-
-        for (int i = 0; i < gameBoard.length; i++) {
-            diagonalSum += gameBoard[i][i];
-        }
-        if (diagonalSum == gameBoard.length || diagonalSum == -gameBoard.length) {
-            winner = diagonalSum;
-            return true;
+        winner = TicTacToeHelper.getWinner(gameBoard, 3);
+        if (winner != 0) {
+            gameOver = true;
+            controller.generateGameEndResult(winner);
         }
 
-        return false;
-    }
-
-    private boolean antiDiagonalCheck() {
-        int row = 0;
-        int column = gameBoard.length - 1;
-
-        int antiDiagonalSum = 0;
-
-        while (column >= 0) {
-            antiDiagonalSum += gameBoard[row][column];
-            row += 1;
-            column -= 1;
-        }
-
-        if (antiDiagonalSum == gameBoard.length || antiDiagonalSum == -gameBoard.length) {
-            winner = antiDiagonalSum;
-            return true;
-        }
-
-        return false;
+        return winner != 0;
     }
 
 }
+
+

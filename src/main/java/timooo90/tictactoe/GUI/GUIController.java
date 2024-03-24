@@ -1,4 +1,4 @@
-package timooo90.tictactoe;
+package timooo90.tictactoe.GUI;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
@@ -7,6 +7,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import timooo90.tictactoe.TicTacToe;
 
 import java.util.HashMap;
 

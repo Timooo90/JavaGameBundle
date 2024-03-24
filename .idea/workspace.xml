@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06ce084e-d273-4a2e-b258-48afb9b26d97" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/timooo90/tictactoe/utilities/TestHelper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/timooo90/tictactoe/utilities/TicTacToeHelperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/BoardHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/BoardHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/Utility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/AIPlayStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/AIOpponent/AIPlayStyle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUI/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUI/GUIController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/TicTacToe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/TicTacToe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/BoardHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/AIOpponent/AdvancedAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/GameResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/AIOpponent/GameResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/TicTacToeHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/GUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GUI.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +28,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Enum" />
+        <option value="JUnit5 Test Class" />
         <option value="Class" />
       </list>
     </option>
@@ -34,20 +45,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\GitRepot\tictactoe\src\main\resources" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="timooo90.tictactoe.utilities" />
     </key>
   </component>
   <component name="RunAnythingCache">

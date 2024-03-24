@@ -6,7 +6,7 @@
 
 
 <?import javafx.scene.control.Button?>
-<GridPane minWidth="-Infinity" minHeight="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timooo90.tictactoe.GUIController" stylesheets="@gui.css">
+<GridPane minWidth="-Infinity" minHeight="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="timooo90.tictactoe.GUI.GUIController" stylesheets="@gui.css">
     <children>
         <VBox fx:id="mainVBox">
             <children>

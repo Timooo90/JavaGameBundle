@@ -1,32 +1,32 @@
-package timooo90.tictactoe.utilities;
+package timooo90.tictactoe.AIOpponent;
+
+import timooo90.tictactoe.utilities.TicTacToeHelper;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 
-public class BoardHandler {
-    private static int boardCount;
+public class AdvancedAI {
     private HashMap<String, Board> boards = new HashMap<>();
+
+
+    public static void main(String[] args) {
+        AdvancedAI advancedAI = new AdvancedAI();
+        advancedAI.initializeBoards();
+
+        Board board = advancedAI.getBoards().get("0;0;0;0;0;0;0;1;0");
+
+        advancedAI.findBestMoveCoordinates(board.gameBoard, -1);
+
+        System.out.println(TicTacToeHelper.boardToDictionaryKey(board.gameBoard));
+    }
 
     public HashMap<String, Board> getBoards() {
         return boards;
     }
 
-    public static void main(String[] args) {
-        BoardHandler boardHandler = new BoardHandler();
-        boardHandler.initializeBoards();
-
-        System.out.println(boardCount);
-
-        Board board = boardHandler.getBoards().get("0;0;0;0;0;0;0;1;0");
-
-        boardHandler.findBestMoveCoordinates(board.gameBoard, -1);
-
-        System.out.println(Utility.boardToDictionaryKey(board.gameBoard));
-    }
-
     public void initializeBoards() {
-        int[][] gameBoard = Utility.getEmptyBoard();
+        int[][] gameBoard = TicTacToeHelper.getEmptyBoard();
         Board board = new Board(gameBoard, true);
         addNewBoard(board.key, board);
     }
@@ -37,7 +37,6 @@ public class BoardHandler {
 
     public void addNewBoard(String key, Board board) {
         boards.put(key, board);
-        boardCount++;
 
         if (!board.isGameEndPosition()) {
             board.generateChildren(board);
@@ -45,7 +44,7 @@ public class BoardHandler {
     }
 
     public String findBestMoveCoordinates(int[][] gameBoard, int player) {
-        String key = Utility.boardToDictionaryKey(gameBoard);
+        String key = TicTacToeHelper.boardToDictionaryKey(gameBoard);
 
         Board board = getBoards().get(key);
 
@@ -54,20 +53,20 @@ public class BoardHandler {
 
         for (Board childBoard: board.getChildren()) {
             if (childBoard.winner == player) {
-                return Utility.getNextCoordinatesFromBoardDifference(board.gameBoard, childBoard.gameBoard);
+                return TicTacToeHelper.getNextCoordinatesFromBoardDifference(board.gameBoard, childBoard.gameBoard);
             }
 
             GameResult result = new GameResult();
             results.add(result);
 
-            result.setBoard(childBoard);
+            result.setRootBoard(childBoard);
 
             findBestBoard(childBoard, result);
         }
 
         GameResult bestResult = getBestResult(results);
 
-        return Utility.getNextCoordinatesFromBoardDifference(gameBoard, bestResult.getBoard().gameBoard);
+        return TicTacToeHelper.getNextCoordinatesFromBoardDifference(gameBoard, bestResult.getRootBoard().gameBoard);
     }
 
     public void findBestBoard(Board board, GameResult result) {
@@ -101,7 +100,7 @@ public class BoardHandler {
             System.out.println("AI win depth: " + result.getAIWinDepth() + " | Human win depth: " + result.getHumanWinDepth() + " | Draw depth: " + result.getDrawDepth());
             //System.out.println(Utility.boardToDictionaryKey(result.getBoard().gameBoard));
 
-            Utility.printGameBoard(result.getBoard().gameBoard);
+            TicTacToeHelper.printGameBoard(result.getRootBoard().gameBoard);
 
 
             if (result.getHumanWinDepth() > optimalResult.getHumanWinDepth()) {
@@ -127,15 +126,13 @@ public class BoardHandler {
         private boolean humanTurn;
         private String key;
         private int winner = -99;
-        private int score = 0;
         private boolean gameEndPosition = false;
-
         ArrayList<Board> children;
 
         public Board(int[][] gameBoard, boolean humanTurn) {
             this.gameBoard = gameBoard;
             this.humanTurn = humanTurn;
-            this.key = Utility.boardToDictionaryKey(this.gameBoard);
+            this.key = TicTacToeHelper.boardToDictionaryKey(this.gameBoard);
             this.children = new ArrayList<>();
 
             checkForEndPosition();
@@ -149,62 +146,20 @@ public class BoardHandler {
             return gameEndPosition;
         }
 
-        public int getWinner() {
-            return winner;
-        }
-
-        public void setWinner(int winner) {
-            this.winner = winner;
-        }
-
         private void checkForEndPosition() {
-            int antiDiagonalIndex = gameBoard.length - 1;
-            int antiDiagonalSum = 0;
+            if (TicTacToeHelper.isGameBoardFull(gameBoard)) {
+                gameEndPosition = true;
+                winner = 0;
+                return;
+            }
 
-            for (int i = 0; i < gameBoard.length; i++) {
-                // Check anti diagonal.
-                antiDiagonalSum += gameBoard[antiDiagonalIndex][i];
-                antiDiagonalIndex--;
-                // Check rows.
-                int rowSum = Arrays.stream(gameBoard[i]).sum();
+            int boardWinner = TicTacToeHelper.getWinner(gameBoard, 3);
 
-
-                if (rowSum == 3 || rowSum == -3) {
-                    setWinner(rowSum/3);
-                    gameEndPosition = true;
-                    return;
-                }
-
-                // Check columns and diagonal.
-                int columnSum = 0;
-                int diagonalSum = 0;
-                for (int j = 0; j < gameBoard.length; j++) {
-                    columnSum += gameBoard[j][i];
-                    if (i == j) {
-                        diagonalSum += gameBoard[i][j];
-                    }
-                }
-
-                if (columnSum == 3 || columnSum == -3) {
-                    setWinner(columnSum/3);
-                    gameEndPosition = true;
-                    return;
-                }
-
-                if (diagonalSum == 3 || diagonalSum == -3) {
-                    setWinner(diagonalSum/3);
-                    gameEndPosition = true;
-                    return;
-                }
-
-                if (antiDiagonalSum == 3 || antiDiagonalSum == -3) {
-                    setWinner(antiDiagonalSum/3);
-                    gameEndPosition = true;
-                    return;
-                }
+            if (boardWinner != 0) {
+                gameEndPosition = true;
+                winner = boardWinner;
             }
         }
-
 
         private int[][] getDeepCopyOfGameBoard() {
             int[][] newGameBoard = new int[gameBoard.length][gameBoard.length];
@@ -214,7 +169,6 @@ public class BoardHandler {
                     newGameBoard[i][j] = gameBoard[i][j];
                 }
             }
-
             return newGameBoard;
         }
 

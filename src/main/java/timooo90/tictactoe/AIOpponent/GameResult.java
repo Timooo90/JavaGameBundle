@@ -1,7 +1,7 @@
-package timooo90.tictactoe.utilities;
+package timooo90.tictactoe.AIOpponent;
 
 public class GameResult {
-    private BoardHandler.Board board;
+    private AdvancedAI.Board rootBoard;
     private int humanWinDepth = 0;
     private boolean humanWinReached = false;
     private int AIWinDepth = 0;
@@ -11,13 +11,12 @@ public class GameResult {
     private boolean drawReached = false;
 
 
-
-    public BoardHandler.Board getBoard() {
-        return board;
+    public AdvancedAI.Board getRootBoard() {
+        return rootBoard;
     }
 
-    public void setBoard(BoardHandler.Board board) {
-        this.board = board;
+    public void setRootBoard(AdvancedAI.Board rootBoard) {
+        this.rootBoard = rootBoard;
     }
 
     public int getHumanWinDepth() {

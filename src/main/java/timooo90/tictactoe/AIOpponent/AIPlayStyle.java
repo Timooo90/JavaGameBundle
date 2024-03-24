@@ -1,4 +1,4 @@
-package timooo90.tictactoe;
+package timooo90.tictactoe.AIOpponent;
 
 public enum AIPlayStyle {
     RANDOM,
