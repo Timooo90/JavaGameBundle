@@ -1,5 +1,6 @@
 package timooo90.tictactoe.utilities;
 import java.lang.Math;
+import java.util.Arrays;
 
 
 public final class Utility {
@@ -53,6 +54,14 @@ public final class Utility {
         }
 
         return coordinates;
+    }
+
+    public static void printGameBoard(int[][] gameBoard) {
+        System.out.println("================================");
+        for (int i = 0; i < gameBoard.length; i++) {
+            System.out.println(Arrays.toString(gameBoard[i]));
+        }
+        System.out.println("================================");
     }
 
 }

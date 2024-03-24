@@ -51,17 +51,10 @@ public class BoardHandler {
 
         ArrayList<GameResult> results = new ArrayList<>();
 
-        Board bestBoard;
-
-        System.out.println("Children of child of child");
-        System.out.println(board.getChildren().get(0).getChildren().get(0).getChildren());
 
         for (Board childBoard: board.getChildren()) {
-            System.out.println(childBoard.getChildren());
             if (childBoard.winner == player) {
-                bestBoard = childBoard;
-                System.out.println("Found winning play!");
-                return Utility.getNextCoordinatesFromBoardDifference(board.gameBoard, bestBoard.gameBoard);
+                return Utility.getNextCoordinatesFromBoardDifference(board.gameBoard, childBoard.gameBoard);
             }
 
             GameResult result = new GameResult();
@@ -96,23 +89,34 @@ public class BoardHandler {
             result.increaseDepth();
 
             findBestBoard(childBoard, result);
+
         }
     }
 
     public GameResult getBestResult(ArrayList<GameResult> results) {
         GameResult optimalResult = results.get(0);
-        System.out.println(results);
 
+        System.out.println("=================================================================================");
         for (GameResult result : results) {
             System.out.println("AI win depth: " + result.getAIWinDepth() + " | Human win depth: " + result.getHumanWinDepth() + " | Draw depth: " + result.getDrawDepth());
-            System.out.println(Utility.boardToDictionaryKey(result.getBoard().gameBoard));
+            //System.out.println(Utility.boardToDictionaryKey(result.getBoard().gameBoard));
+
+            Utility.printGameBoard(result.getBoard().gameBoard);
+
+
+            if (result.getHumanWinDepth() > optimalResult.getHumanWinDepth()) {
+                optimalResult = result;
+            }
+            /*
+            //if (result.getHumanWinDepth() > optimalResult.getHumanWinDepth()) {
             if (result.isAIWinReached() && result.getAIWinDepth() < result.getHumanWinDepth() && result.getAIWinDepth() < optimalResult.getAIWinDepth()) {
                 optimalResult = result;
             }
-            else if (result.isDrawReached() && result.getDrawDepth() < result.getHumanWinDepth()) {
+            else if (result.isDrawReached() && result.getDrawDepth() <= result.getHumanWinDepth()) {
                 optimalResult = result;
                 System.out.println("Optimal result: " + Utility.boardToDictionaryKey(optimalResult.getBoard().gameBoard));
             }
+             */
         }
 
         return optimalResult;
@@ -225,11 +229,14 @@ public class BoardHandler {
 
                         Board newBoard = new Board(newGameBoard, !humanTurn);
 
-                        parentBoard.getChildren().add(newBoard);
-
                         if (!boardExistsAlready(newBoard.key)) {
                             addNewBoard(newBoard.key, newBoard);
                         }
+                        else {
+                            newBoard = boards.get(newBoard.key);
+                        }
+
+                        parentBoard.getChildren().add(newBoard);
                     }
                 }
             }
