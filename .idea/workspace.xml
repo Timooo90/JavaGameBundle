@@ -5,19 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06ce084e-d273-4a2e-b258-48afb9b26d97" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/timooo90/tictactoe/utilities/TestHelper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/timooo90/tictactoe/utilities/TicTacToeHelperTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/AIPlayStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/AIOpponent/AIPlayStyle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUI/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUI/GUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/TicTacToe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/TicTacToe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/BoardHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/AIOpponent/AdvancedAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/GameResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/AIOpponent/GameResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/Utility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/TicTacToeHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/GUI.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/timooo90/tictactoe/utilities/TicTacToeHelperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/timooo90/tictactoe/utilities/TicTacToeHelperTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

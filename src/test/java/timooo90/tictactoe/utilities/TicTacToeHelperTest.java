@@ -123,7 +123,7 @@ class TicTacToeHelperTest {
     }
 
     @Test
-    void givenEmptyBoards_whenIsGameBoardFull_thenReturnTrue() {
+    void givenEmptyBoards_whenIsGameBoardFull_thenReturnFalse() {
         ArrayList<int[][]> nonFullBoards = testHelper.getNonFullBoards();
 
         for (int[][] board : nonFullBoards) {
