@@ -18,12 +18,32 @@ public class AdvancedAI {
         AdvancedAI advancedAI = new AdvancedAI();
         advancedAI.initializeBoards();
 
-        int[][] gameBoard = new int[][] { {1, -1, 0}, {0, 0, 0}, {0, 1, 0} };
+        int[][] gameBoard = new int[][] { {1, 1, -1}, {0, 0, 1}, {1, -1, -1} };
 
         Board board = advancedAI.getBoards().get(TicTacToeHelper.boardToDictionaryKey(gameBoard));
 
+        int[][] gameBoard2 = new int[][] { {1, 1, -1}, {1, -1, 1}, {1, -1, -1} };
+
+        Board board2 = advancedAI.getBoards().get(TicTacToeHelper.boardToDictionaryKey(gameBoard2));
+
+        System.out.println(board2.winner);
+
+        /*
+        for (Board child : board.getChildren()) {
+            TicTacToeHelper.printGameBoard(child.gameBoard);
+
+            for (Board grandChild : child.getChildren()) {
+                TicTacToeHelper.printGameBoard(grandChild.gameBoard);
+                System.out.println("Winner: " + grandChild.winner);
+            }
+        }
+         */
+
+
+        /*
         String coordinates = advancedAI.findBestMoveCoordinates(gameBoard, -1);
         System.out.println(coordinates);
+         */
 
     }
 
@@ -46,6 +66,11 @@ public class AdvancedAI {
     }
 
     public String findBestMoveCoordinates(int[][] gameBoard, int player) {
+        // If center is free, place there.
+        if (gameBoard[1][1] == 0) {
+            return "11";
+        }
+
         String key = TicTacToeHelper.boardToDictionaryKey(gameBoard);
         Board board = getBoards().get(key);
 
@@ -73,8 +98,6 @@ public class AdvancedAI {
 
 
     private void findGameResults(GameResult gameResult, LinkedList<Board> childrenToCheck) {
-        gameResult.increaseDepth();
-
 
         while (childrenToCheck.size() > 0) {
             LinkedList<Board> nextDepthOfChildren = new LinkedList<>();
@@ -87,7 +110,6 @@ public class AdvancedAI {
             switch (nextChild.winner) {
                 case -1: {
                     gameResult.setAIWinReached(true);
-                    return;
                 }
                 case 1: {
                     gameResult.setHumanWinReached(true);
@@ -97,15 +119,11 @@ public class AdvancedAI {
                 }
             }
 
-
             if (childrenToCheck.size() == 0 && nextDepthOfChildren.size() != 0) {
-                System.out.println("asdasd");
                 childrenToCheck.addAll(nextDepthOfChildren);
                 nextDepthOfChildren.clear();
                 gameResult.increaseDepth();
             }
-            System.out.println("Children to check size " + childrenToCheck.size());
-            System.out.println("Next size " + nextDepthOfChildren.size());
         }
     }
 
@@ -114,19 +132,31 @@ public class AdvancedAI {
 
         System.out.println("=================================================================================");
         for (GameResult result : results) {
+            if (!result.isHumanWinReached()) {
+                result.setHumanWinDepth(99);
+            }
+            if (!result.isAIWinReached()) {
+                result.setAIWinDepth(99);
+            }
+            if (!result.isDrawReached()) {
+                result.setDrawDepth(99);
+            }
+
             System.out.println("AI win depth: " + result.getAIWinDepth() + " | Human win depth: " + result.getHumanWinDepth() + " | Draw depth: " + result.getDrawDepth());
 
             TicTacToeHelper.printGameBoard(result.getRootBoard().gameBoard);
+            System.out.println("AI win reached: " + result.isAIWinReached());
+            System.out.println("Human win reached: " + result.isHumanWinReached());
 
-            if (result.getAIWinDepth() == 0) {
+            // If AI can win on next move, choose that.
+            if (result.isAIWinReached() && result.getAIWinDepth() <= 1) {
                 return result;
             }
-
-            if (result.getHumanWinDepth() <= 1) {
-                continue;
+            // Or if human can't win at all (AKA a draw at worst), choose that.
+            else if (!result.isHumanWinReached()) {
+                optimalResult = result;
             }
-
-            if (result.getHumanWinDepth() > optimalResult.getAIWinDepth()) {
+            else if (result.getHumanWinDepth() > optimalResult.getAIWinDepth()) {
                 optimalResult = result;
             }
             else if (result.getHumanWinDepth() > optimalResult.getHumanWinDepth()) {
@@ -135,6 +165,7 @@ public class AdvancedAI {
             else if (result.getHumanWinDepth() > optimalResult.getDrawDepth()) {
                 optimalResult = result;
             }
+
         }
 
         return optimalResult;
@@ -166,17 +197,17 @@ public class AdvancedAI {
         }
 
         private void checkForEndPosition() {
-            if (TicTacToeHelper.isGameBoardFull(gameBoard)) {
-                gameEndPosition = true;
-                winner = 0;
-                return;
-            }
-
             int boardWinner = TicTacToeHelper.getWinner(gameBoard, 3);
 
             if (boardWinner != 0) {
                 gameEndPosition = true;
                 winner = boardWinner;
+                return;
+            }
+
+            if (TicTacToeHelper.isGameBoardFull(gameBoard)) {
+                gameEndPosition = true;
+                winner = 0;
             }
         }
 
