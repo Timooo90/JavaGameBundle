@@ -36,6 +36,10 @@
     -fx-fill: gray;
 }
 
+.snakePartCell {
+    -fx-fill: black;
+}
+
 #snakePlayArea {
     -fx-border-color: black;
     -fx-border-width: 10;
