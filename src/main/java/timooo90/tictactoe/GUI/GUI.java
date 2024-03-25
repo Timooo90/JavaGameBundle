@@ -12,7 +12,6 @@ public class GUI extends Application {
     public void main() {
         launch();
     }
-
     public void setController(GUIController controller) {
         this.controller = controller;
     }

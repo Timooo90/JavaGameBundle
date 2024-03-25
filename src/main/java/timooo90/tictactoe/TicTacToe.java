@@ -89,7 +89,7 @@ public class TicTacToe {
     }
 
     private void selectAIOptimizedMove() {
-        handleAIMove(advancedAI.findBestMoveCoordinates(gameBoard, -1));
+        handleAIMove(advancedAI.findBestMoveCoordinates(gameBoard));
     }
 
 
