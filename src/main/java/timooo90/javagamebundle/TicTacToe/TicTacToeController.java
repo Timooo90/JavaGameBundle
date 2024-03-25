@@ -1,4 +1,4 @@
-package timooo90.tictactoe.GUI;
+package timooo90.javagamebundle.TicTacToe;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseButton;
@@ -7,11 +7,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import timooo90.tictactoe.TicTacToe;
+import timooo90.javagamebundle.GUI.GUI;
 
 import java.util.HashMap;
 
-public class GUIController {
+public class TicTacToeController {
     @FXML
     private VBox contentBox;
     @FXML

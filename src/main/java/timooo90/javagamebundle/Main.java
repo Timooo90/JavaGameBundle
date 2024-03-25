@@ -1,6 +1,6 @@
-package timooo90.tictactoe;
+package timooo90.javagamebundle;
 
-import timooo90.tictactoe.GUI.GUI;
+import timooo90.javagamebundle.GUI.GUI;
 
 public class Main {
     public static void main(String[] args) {

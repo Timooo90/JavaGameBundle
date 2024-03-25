@@ -1,4 +1,4 @@
-package timooo90.tictactoe.utilities;
+package timooo90.javagamebundle.TicTacToe.utilities;
 
 import org.junit.jupiter.api.Test;
 

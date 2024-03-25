@@ -1,6 +1,6 @@
-package timooo90.tictactoe.AIOpponent;
+package timooo90.javagamebundle.TicTacToe.AIOpponent;
 
-import timooo90.tictactoe.utilities.TicTacToeHelper;
+import timooo90.javagamebundle.TicTacToe.utilities.TicTacToeHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;

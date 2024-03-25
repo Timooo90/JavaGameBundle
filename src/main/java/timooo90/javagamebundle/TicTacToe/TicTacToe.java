@@ -1,8 +1,7 @@
-package timooo90.tictactoe;
-import timooo90.tictactoe.AIOpponent.AIPlayStyle;
-import timooo90.tictactoe.AIOpponent.AdvancedAI;
-import timooo90.tictactoe.GUI.GUIController;
-import timooo90.tictactoe.utilities.TicTacToeHelper;
+package timooo90.javagamebundle.TicTacToe;
+import timooo90.javagamebundle.TicTacToe.AIOpponent.AIPlayStyle;
+import timooo90.javagamebundle.TicTacToe.AIOpponent.AdvancedAI;
+import timooo90.javagamebundle.TicTacToe.utilities.TicTacToeHelper;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -10,7 +9,7 @@ import java.util.Random;
 
 public class TicTacToe {
     private static AdvancedAI advancedAI = new AdvancedAI();
-    private GUIController controller;
+    private TicTacToeController controller;
     private Random randomNumberGenerator = new Random();
     private AIPlayStyle aiPlayStyle = AIPlayStyle.OPTIMIZED;
     private int[][] gameBoard;
@@ -18,7 +17,7 @@ public class TicTacToe {
     private boolean gameOver = false;
     private int winner = 0;
 
-    public TicTacToe(GUIController controller) {
+    public TicTacToe(TicTacToeController controller) {
         this.controller = controller;
         resetCurrentBoard();
 
