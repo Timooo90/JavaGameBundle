@@ -3,26 +3,28 @@ package timooo90.tictactoe.AIOpponent;
 import timooo90.tictactoe.utilities.TicTacToeHelper;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
 
 public class AdvancedAI {
     private HashMap<String, Board> boards = new HashMap<>();
 
 
+    public HashMap<String, Board> getBoards() {
+        return boards;
+    }
+
     public static void main(String[] args) {
         AdvancedAI advancedAI = new AdvancedAI();
         advancedAI.initializeBoards();
 
-        Board board = advancedAI.getBoards().get("0;0;0;0;0;0;0;1;0");
+        int[][] gameBoard = new int[][] { {1, -1, 0}, {0, 0, 0}, {0, 1, 0} };
 
-        advancedAI.findBestMoveCoordinates(board.gameBoard, -1);
+        Board board = advancedAI.getBoards().get(TicTacToeHelper.boardToDictionaryKey(gameBoard));
 
-        System.out.println(TicTacToeHelper.boardToDictionaryKey(board.gameBoard));
-    }
+        String coordinates = advancedAI.findBestMoveCoordinates(gameBoard, -1);
+        System.out.println(coordinates);
 
-    public HashMap<String, Board> getBoards() {
-        return boards;
     }
 
     public void initializeBoards() {
@@ -45,77 +47,94 @@ public class AdvancedAI {
 
     public String findBestMoveCoordinates(int[][] gameBoard, int player) {
         String key = TicTacToeHelper.boardToDictionaryKey(gameBoard);
-
         Board board = getBoards().get(key);
 
+        Board optimalChild = findOptimalChildBoard(board);
+
+        return TicTacToeHelper.getNextCoordinatesFromBoardDifference(gameBoard, optimalChild.gameBoard);
+    }
+
+    private Board findOptimalChildBoard(Board board) {
         ArrayList<GameResult> results = new ArrayList<>();
 
+        for (Board childBoard : board.getChildren()) {
+            LinkedList<Board> childrenToCheck = new LinkedList<>();
+            childrenToCheck.add(childBoard);
+            GameResult gameResult = new GameResult(childBoard);
+            results.add(gameResult);
 
-        for (Board childBoard: board.getChildren()) {
-            if (childBoard.winner == player) {
-                return TicTacToeHelper.getNextCoordinatesFromBoardDifference(board.gameBoard, childBoard.gameBoard);
-            }
-
-            GameResult result = new GameResult();
-            results.add(result);
-
-            result.setRootBoard(childBoard);
-
-            findBestBoard(childBoard, result);
+            findGameResults(gameResult, childrenToCheck);
         }
 
         GameResult bestResult = getBestResult(results);
 
-        return TicTacToeHelper.getNextCoordinatesFromBoardDifference(gameBoard, bestResult.getRootBoard().gameBoard);
+        return bestResult.getRootBoard();
     }
 
-    public void findBestBoard(Board board, GameResult result) {
 
-        for (Board childBoard: board.getChildren()) {
+    private void findGameResults(GameResult gameResult, LinkedList<Board> childrenToCheck) {
+        gameResult.increaseDepth();
 
-            switch (childBoard.winner) {
+
+        while (childrenToCheck.size() > 0) {
+            LinkedList<Board> nextDepthOfChildren = new LinkedList<>();
+            for (Board child : childrenToCheck) {
+                nextDepthOfChildren.addAll(child.getChildren());
+            }
+
+            Board nextChild = childrenToCheck.removeFirst();
+
+            switch (nextChild.winner) {
                 case -1: {
-                    result.setAIWinReached(true);
+                    gameResult.setAIWinReached(true);
+                    return;
                 }
                 case 1: {
-                    result.setHumanWinReached(true);
+                    gameResult.setHumanWinReached(true);
                 }
                 case 0: {
-                    result.setDrawReached(true);
+                    gameResult.setDrawReached(true);
                 }
             }
 
-            result.increaseDepth();
 
-            findBestBoard(childBoard, result);
-
+            if (childrenToCheck.size() == 0 && nextDepthOfChildren.size() != 0) {
+                System.out.println("asdasd");
+                childrenToCheck.addAll(nextDepthOfChildren);
+                nextDepthOfChildren.clear();
+                gameResult.increaseDepth();
+            }
+            System.out.println("Children to check size " + childrenToCheck.size());
+            System.out.println("Next size " + nextDepthOfChildren.size());
         }
     }
 
-    public GameResult getBestResult(ArrayList<GameResult> results) {
+    private GameResult getBestResult(ArrayList<GameResult> results) {
         GameResult optimalResult = results.get(0);
 
         System.out.println("=================================================================================");
         for (GameResult result : results) {
             System.out.println("AI win depth: " + result.getAIWinDepth() + " | Human win depth: " + result.getHumanWinDepth() + " | Draw depth: " + result.getDrawDepth());
-            //System.out.println(Utility.boardToDictionaryKey(result.getBoard().gameBoard));
 
             TicTacToeHelper.printGameBoard(result.getRootBoard().gameBoard);
 
+            if (result.getAIWinDepth() == 0) {
+                return result;
+            }
 
-            if (result.getHumanWinDepth() > optimalResult.getHumanWinDepth()) {
+            if (result.getHumanWinDepth() <= 1) {
+                continue;
+            }
+
+            if (result.getHumanWinDepth() > optimalResult.getAIWinDepth()) {
                 optimalResult = result;
             }
-            /*
-            //if (result.getHumanWinDepth() > optimalResult.getHumanWinDepth()) {
-            if (result.isAIWinReached() && result.getAIWinDepth() < result.getHumanWinDepth() && result.getAIWinDepth() < optimalResult.getAIWinDepth()) {
+            else if (result.getHumanWinDepth() > optimalResult.getHumanWinDepth()) {
                 optimalResult = result;
             }
-            else if (result.isDrawReached() && result.getDrawDepth() <= result.getHumanWinDepth()) {
+            else if (result.getHumanWinDepth() > optimalResult.getDrawDepth()) {
                 optimalResult = result;
-                System.out.println("Optimal result: " + Utility.boardToDictionaryKey(optimalResult.getBoard().gameBoard));
             }
-             */
         }
 
         return optimalResult;

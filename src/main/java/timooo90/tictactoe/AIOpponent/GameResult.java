@@ -3,14 +3,21 @@ package timooo90.tictactoe.AIOpponent;
 public class GameResult {
     private AdvancedAI.Board rootBoard;
     private int humanWinDepth = 0;
+    private int previousHumanWinDepth = 0;
     private boolean humanWinReached = false;
     private int AIWinDepth = 0;
+    private int previousAIWinDepth = 0;
     private boolean AIWinReached = false;
 
     private int drawDepth = 0;
+    private int previousDrawDepth = 0;
+
     private boolean drawReached = false;
 
 
+    public GameResult(AdvancedAI.Board rootBoard) {
+        this.rootBoard = rootBoard;
+    }
     public AdvancedAI.Board getRootBoard() {
         return rootBoard;
     }
@@ -67,6 +74,30 @@ public class GameResult {
         this.drawReached = drawReached;
     }
 
+    public int getPreviousHumanWinDepth() {
+        return previousHumanWinDepth;
+    }
+
+    public void setPreviousHumanWinDepth(int previousHumanWinDepth) {
+        this.previousHumanWinDepth = previousHumanWinDepth;
+    }
+
+    public int getPreviousAIWinDepth() {
+        return previousAIWinDepth;
+    }
+
+    public void setPreviousAIWinDepth(int previousAIWinDepth) {
+        this.previousAIWinDepth = previousAIWinDepth;
+    }
+
+    public int getPreviousDrawDepth() {
+        return previousDrawDepth;
+    }
+
+    public void setPreviousDrawDepth(int previousDrawDepth) {
+        this.previousDrawDepth = previousDrawDepth;
+    }
+
     public void increaseDepth() {
         if (!humanWinReached) {
             setHumanWinDepth(getHumanWinDepth() + 1);
@@ -77,5 +108,9 @@ public class GameResult {
         if (!drawReached) {
             setDrawDepth(getHumanWinDepth() + 1);
         }
+    }
+
+    public boolean haveAllResultsBeenFound() {
+        return isHumanWinReached() && isAIWinReached() && isDrawReached();
     }
 }

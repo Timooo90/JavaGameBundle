@@ -108,17 +108,17 @@ public class TicTacToe {
 
 
     private boolean checkGameEndingConditions() {
-        if (TicTacToeHelper.isGameBoardFull(gameBoard)) {
-            gameOver = true;
-            winner = 0;
-            controller.generateGameEndResult(winner);
-            return true;
-        }
-
         winner = TicTacToeHelper.getWinner(gameBoard, 3);
         if (winner != 0) {
             gameOver = true;
             controller.generateGameEndResult(winner);
+        }
+
+        else if (TicTacToeHelper.isGameBoardFull(gameBoard)) {
+            gameOver = true;
+            winner = 0;
+            controller.generateGameEndResult(winner);
+            return true;
         }
 
         return winner != 0;
