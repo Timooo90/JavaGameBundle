@@ -17,3 +17,13 @@
     -fx-background-color: #6c6262;
     -fx-font-size: 25;
 }
+
+.returnToMenuButton {
+    -fx-row-halignment: right;
+    -fx-font-size: 14;
+    -fx-padding: 10, 0, 0, 10;
+}
+
+.mainMenuButton {
+    -fx-font-size: 40;
+}

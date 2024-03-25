@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="timooo90.javagamebundle.MainMenuController"
+            prefHeight="400.0" prefWidth="600.0"
+            stylesheets="gui.css">
+
+    <children>
+        <HBox styleClass="mainMenuButton" >
+            <children>
+                <Button onAction="#startTicTacToe" text="Play Tic Tac Toe"/>
+            </children>
+        </HBox>
+
+    </children>
+
+</AnchorPane>

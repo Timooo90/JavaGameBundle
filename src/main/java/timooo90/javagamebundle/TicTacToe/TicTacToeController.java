@@ -104,4 +104,14 @@ public class TicTacToeController {
         gameEndLabel.setText(endText);
     }
 
+    @FXML
+    private void returnToMainMenu() {
+        try {
+            graphicalUI.startMainMenu();
+        } catch (Exception e) {
+            System.out.println("Failed to load main menu.");
+        }
+
+    }
+
 }

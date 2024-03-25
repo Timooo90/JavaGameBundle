@@ -5,18 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06ce084e-d273-4a2e-b258-48afb9b26d97" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/MainMenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/MainMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/AIOpponent/AIPlayStyle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/TicTacToe/AIOpponent/AIPlayStyle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/AIOpponent/AdvancedAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/TicTacToe/AIOpponent/AdvancedAI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/AIOpponent/GameResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/TicTacToe/AIOpponent/GameResult.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/GUI/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/GUI/GUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/TicTacToe/TicTacToeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/TicTacToe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/TicTacToe/TicTacToe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/tictactoe/utilities/TicTacToeHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/TicTacToe/utilities/TicTacToeHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/GUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TicTacToeGUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/timooo90/tictactoe/utilities/TestHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/timooo90/javagamebundle/TicTacToe/utilities/TestHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/timooo90/tictactoe/utilities/TicTacToeHelperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/timooo90/javagamebundle/TicTacToe/utilities/TicTacToeHelperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/GUI/GUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/TicTacToe/TicTacToeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/TicTacToe/TicTacToeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/TicTacToeGUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TicTacToe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +24,7 @@
       <list>
         <option value="Enum" />
         <option value="JUnit5 Test Class" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>

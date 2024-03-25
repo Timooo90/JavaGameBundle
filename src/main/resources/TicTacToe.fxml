@@ -14,7 +14,16 @@
                     <children>
                         <HBox fx:id="instructionBox">
                             <children>
-                                <Label text="Play tic tac toe against the computer!"></Label>
+                                <HBox>
+                                    <children>
+                                        <Label text="Play tic tac toe against the computer!"></Label>
+                                    </children>
+                                </HBox>
+                                <HBox styleClass="returnToMenuButton" >
+                                    <children>
+                                        <Button onAction="#returnToMainMenu" text="Return to main menu."/>
+                                    </children>
+                                </HBox>
                             </children>
                         </HBox>
                         <HBox>
