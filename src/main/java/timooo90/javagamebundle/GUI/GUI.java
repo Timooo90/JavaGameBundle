@@ -5,12 +5,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import timooo90.javagamebundle.MainMenuController;
+import timooo90.javagamebundle.Snake.SnakeController;
 import timooo90.javagamebundle.TicTacToe.TicTacToeController;
 
 
 public class GUI extends Application {
     private MainMenuController mainMenuController;
     private TicTacToeController ticTacToeController;
+    private SnakeController snakeController;
     private Stage primaryStage;
 
     public void main() {
@@ -22,6 +24,10 @@ public class GUI extends Application {
 
     public void setMainMenuController(MainMenuController mainMenuController) {
         this.mainMenuController = mainMenuController;
+    }
+
+    public void setSnakeController(SnakeController snakeController) {
+        this.snakeController = snakeController;
     }
 
     @Override
@@ -58,5 +64,20 @@ public class GUI extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+    public void startSnake() throws Exception {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Snake.fxml"));
+        Parent root = loader.load();
+
+        setSnakeController(loader.getController());
+
+        snakeController.setGraphicalUI(this);
+        snakeController.startNewGame();
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
 
 }

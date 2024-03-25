@@ -10,12 +10,21 @@
             stylesheets="gui.css">
 
     <children>
-        <HBox styleClass="mainMenuButton" >
+        <VBox>
             <children>
-                <Button onAction="#startTicTacToe" text="Play Tic Tac Toe"/>
-            </children>
-        </HBox>
+                <HBox styleClass="mainMenuButton" >
+                    <children>
+                        <Button onAction="#startTicTacToe" text="Play Tic Tac Toe"/>
+                    </children>
+                </HBox>
 
+                <HBox styleClass="mainMenuButton" >
+                    <children>
+                        <Button onAction="#startSnake" text="Play Snake"/>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
     </children>
 
 </AnchorPane>

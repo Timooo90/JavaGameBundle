@@ -6,7 +6,6 @@ import timooo90.javagamebundle.GUI.GUI;
 public class MainMenuController {
     private GUI graphicalUI;
 
-
     public void setGraphicalUI(GUI graphicalUI) {
         this.graphicalUI = graphicalUI;
     }
@@ -20,5 +19,13 @@ public class MainMenuController {
         }
     }
 
+    @FXML
+    private void startSnake() {
+        try {
+            graphicalUI.startSnake();
+        } catch (Exception e) {
+            System.out.println("Failed to start Tic Tac Toe.");;
+        }
+    }
 
 }

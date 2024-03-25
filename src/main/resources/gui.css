@@ -27,3 +27,16 @@
 .mainMenuButton {
     -fx-font-size: 40;
 }
+
+.snakeGridCell1 {
+    -fx-fill: orange;
+}
+
+.snakeGridCell2 {
+    -fx-fill: gray;
+}
+
+#snakePlayArea {
+    -fx-border-color: black;
+    -fx-border-width: 10;
+}

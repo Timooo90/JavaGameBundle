@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06ce084e-d273-4a2e-b258-48afb9b26d97" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/MainMenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/MainMenu.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/Direction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/Snake.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/SnakeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/SnakePart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Snake.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/GUI/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/TicTacToe/TicTacToeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/TicTacToe/TicTacToeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/TicTacToeGUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/TicTacToe.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/MainMenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/MainMenu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/MainMenu.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,10 +24,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Enum" />
         <option value="JUnit5 Test Class" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
