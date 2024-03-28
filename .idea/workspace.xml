@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="06ce084e-d273-4a2e-b258-48afb9b26d97" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/GUI/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/GUI/GUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/MainMenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/MainMenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/GameLoopTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/GameLoopTimer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/Snake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/SnakeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/SnakeController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

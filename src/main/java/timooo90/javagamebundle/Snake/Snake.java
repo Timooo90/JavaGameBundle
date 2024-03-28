@@ -41,24 +41,42 @@ public class Snake {
         int prevX = head.getXPosition();
         int prevY = head.getYPosition();
 
+        int targetX = prevX;
+        int targetY = prevY;
+
         switch (direction) {
             case UP: {
-                movePart(head, prevX, prevY - 1);
+                targetY -= 1;
                 break;
             }
             case DOWN: {
-                movePart(head, prevX, prevY + 1);
+                targetY += 1;
                 break;
             }
             case LEFT: {
-                movePart(head, prevX - 1, prevY);
+                targetX -= 1;
                 break;
             }
             case RIGHT:{
-                movePart(head, prevX + 1, prevY);
+                targetX += 1;
                 break;
             }
         }
+
+        if (targetX > gridSize - 1) {
+            targetX = 0;
+        }
+        else if (targetX < 0) {
+            targetX = gridSize - 1;
+        }
+        if (targetY > gridSize - 1) {
+            targetY = 0;
+        }
+        else if (targetY < 0) {
+            targetY = gridSize - 1;
+        }
+
+        movePart(head, targetX, targetY);
         moveBody(prevX, prevY);
     }
 
