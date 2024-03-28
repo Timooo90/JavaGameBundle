@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/GameLoopTimer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/GameLoopTimer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/Snake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/Snake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/SnakeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/timooo90/javagamebundle/Snake/SnakeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/gui.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gui.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

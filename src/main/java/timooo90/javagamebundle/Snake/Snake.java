@@ -15,6 +15,7 @@ public class Snake {
     private boolean movedSinceLastInput = true;
     private int numberOfBodyParts = 0;
     private Food food = new Food();
+    private boolean gameOver = false;
 
 
     public Snake(SnakeController controller) {
@@ -36,6 +37,8 @@ public class Snake {
     }
 
     public void renderFrame() {
+        if (gameOver) { return; }
+
         moveSnakeParts();
         movedSinceLastInput = true;
 
@@ -83,7 +86,10 @@ public class Snake {
 
         movePart(head, targetX, targetY);
 
-        if (grid[head.getYPosition()][head.getXPosition()] == 5) {
+        if (grid[head.getYPosition()][head.getXPosition()] == 1) {
+            gameOver();
+        }
+        else if (grid[head.getYPosition()][head.getXPosition()] == 5) {
             spawnFood();
             addBodyPart();
         }
@@ -160,7 +166,7 @@ public class Snake {
     private void updateGrid() {
         grid = new int[gridSize][gridSize];
 
-        grid[head.getYPosition()][head.getXPosition()] = 1;
+        grid[head.getYPosition()][head.getXPosition()] = 2;
 
         for (SnakePart part : bodyParts) {
             grid[part.getYPosition()][part.getXPosition()] = 1;
@@ -173,6 +179,25 @@ public class Snake {
         public void run() {
             renderFrame();
         }
+    }
+
+    private void spawnFood() {
+        while (true) {
+            int randomX = random.nextInt(gridSize);
+            int randomY = random.nextInt(gridSize);
+
+            if (grid[randomY][randomX] != 0) {
+                continue;
+            }
+
+            food.setPositionX(randomX);
+            food.setPositionY(randomY);
+            break;
+        }
+    }
+
+    private void gameOver() {
+        gameOver = true;
     }
 
     public int[][] getGrid() {
@@ -194,18 +219,4 @@ public class Snake {
         movedSinceLastInput = false;
     }
 
-    public void spawnFood() {
-        while (true) {
-            int randomX = random.nextInt(gridSize);
-            int randomY = random.nextInt(gridSize);
-
-            if (grid[randomY][randomX] != 0) {
-                continue;
-            }
-
-            food.setPositionX(randomX);
-            food.setPositionY(randomY);
-            break;
-        }
-    }
 }

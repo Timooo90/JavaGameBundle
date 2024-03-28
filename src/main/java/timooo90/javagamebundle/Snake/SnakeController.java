@@ -23,7 +23,6 @@ public class SnakeController {
         timer.start();
 
         game.startGame();
-
     }
 
     public void render() {
@@ -53,7 +52,11 @@ public class SnakeController {
                     cell.getStyleClass().add("snakeGridCell2");
                 }
 
-                if (grid[i][j] == 1) {
+                if (grid[i][j] == 2) {
+                    cell.getStyleClass().clear();
+                    cell.getStyleClass().add("snakeHeadCell");
+                }
+                else if (grid[i][j] == 1) {
                     cell.getStyleClass().clear();
                     cell.getStyleClass().add("snakePartCell");
                 }

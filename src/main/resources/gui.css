@@ -40,6 +40,13 @@
     -fx-fill: black;
 }
 
+.snakeHeadCell {
+    -fx-background-color: transparent;
+    -fx-fill: #1e1616;
+    -fx-arc-height: 20;
+    -fx-arc-width: 20;
+}
+
 .foodCell {
     -fx-fill: green;
 }
