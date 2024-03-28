@@ -12,7 +12,7 @@ public class GameLoopTimer extends AnimationTimer {
 
     @Override
     public void handle(long now) {
-        if (now - lastUpdate >= 300_000_000) {
+        if (now - lastUpdate >= 50_000_000) {
             lastUpdate = now;
             controller.render();
         }

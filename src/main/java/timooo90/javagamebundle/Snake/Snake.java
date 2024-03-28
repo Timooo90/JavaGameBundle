@@ -24,9 +24,9 @@ public class Snake {
         this.direction = Direction.RIGHT;
 
         grid[head.getXPosition()][head.getYPosition()] = 1;
-        bodyParts.add(new SnakePart(head.getXPosition() - 1, head.getYPosition()));
-        bodyParts.add(new SnakePart(head.getXPosition() - 2, head.getYPosition()));
-        numberOfBodyParts += 2;
+
+        addBodyPart();
+        addBodyPart();
 
         spawnFood();
     }
@@ -82,6 +82,12 @@ public class Snake {
         }
 
         movePart(head, targetX, targetY);
+
+        if (grid[head.getYPosition()][head.getXPosition()] == 5) {
+            spawnFood();
+            addBodyPart();
+        }
+
         moveBody(prevX, prevY);
     }
 
@@ -89,6 +95,7 @@ public class Snake {
         part.setXPosition(targetX);
         part.setYPosition(targetY);
     }
+
 
     private void moveBody(int previousX, int previousY) {
         for (SnakePart part : bodyParts) {
@@ -100,6 +107,54 @@ public class Snake {
             previousX = tempPreviousX;
             previousY = tempPreviousY;
         }
+    }
+
+    private void addBodyPart() {
+        SnakePart lastPart;
+
+        if (bodyParts.size() < 1) {
+            lastPart = head;
+        }
+        else {
+            lastPart = bodyParts.get(bodyParts.size() - 1);
+        }
+
+        int tailX = lastPart.getXPosition();
+        int tailY = lastPart.getYPosition();
+
+        int newX = tailX;
+        int newY = tailY;
+
+        switch (direction) {
+            case UP: {
+                newY -= 1;
+            }
+            case DOWN: {
+                newY += 1;
+            }
+            case LEFT: {
+                newX += 1;
+            }
+            case RIGHT: {
+                newX -= 1;
+            }
+        }
+
+        if (newX > gridSize - 1) {
+            newX = 0;
+        }
+        else if (newX < 0) {
+            newX = gridSize - 1;
+        }
+        if (newY > gridSize - 1) {
+            newY = 0;
+        }
+        else if (newY < 0) {
+            newY = gridSize - 1;
+        }
+
+        bodyParts.add(new SnakePart(newX, newY));
+        numberOfBodyParts += 1;
     }
 
     private void updateGrid() {

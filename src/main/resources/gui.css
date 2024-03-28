@@ -41,7 +41,7 @@
 }
 
 .foodCell {
-    -fx-fill: pink;
+    -fx-fill: green;
 }
 
 #snakePlayArea {
