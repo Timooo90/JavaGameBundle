@@ -57,6 +57,10 @@ public class SnakeController {
                     cell.getStyleClass().clear();
                     cell.getStyleClass().add("snakePartCell");
                 }
+                else if (grid[i][j] == 5) {
+                    cell.getStyleClass().clear();
+                    cell.getStyleClass().add("foodCell");
+                }
 
                 even = !even;
 

@@ -1,9 +1,11 @@
 package timooo90.javagamebundle.Snake;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.TimerTask;
 
 public class Snake {
+    Random random = new Random();
     private int gridSize = 20;
     private SnakeController controller;
     private int[][] grid;
@@ -12,6 +14,7 @@ public class Snake {
     private Direction direction;
     private boolean movedSinceLastInput = true;
     private int numberOfBodyParts = 0;
+    private Food food = new Food();
 
 
     public Snake(SnakeController controller) {
@@ -24,6 +27,8 @@ public class Snake {
         bodyParts.add(new SnakePart(head.getXPosition() - 1, head.getYPosition()));
         bodyParts.add(new SnakePart(head.getXPosition() - 2, head.getYPosition()));
         numberOfBodyParts += 2;
+
+        spawnFood();
     }
 
     public void startGame() {
@@ -105,6 +110,8 @@ public class Snake {
         for (SnakePart part : bodyParts) {
             grid[part.getYPosition()][part.getXPosition()] = 1;
         }
+
+        grid[food.getPositionY()][food.getPositionX()] = 5;
     }
 
     private class renderTimer extends TimerTask {
@@ -130,5 +137,20 @@ public class Snake {
         direction = targetDirection;
 
         movedSinceLastInput = false;
+    }
+
+    public void spawnFood() {
+        while (true) {
+            int randomX = random.nextInt(gridSize);
+            int randomY = random.nextInt(gridSize);
+
+            if (grid[randomY][randomX] != 0) {
+                continue;
+            }
+
+            food.setPositionX(randomX);
+            food.setPositionY(randomY);
+            break;
+        }
     }
 }

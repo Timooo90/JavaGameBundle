@@ -40,6 +40,10 @@
     -fx-fill: black;
 }
 
+.foodCell {
+    -fx-fill: pink;
+}
+
 #snakePlayArea {
     -fx-border-color: black;
     -fx-border-width: 10;
