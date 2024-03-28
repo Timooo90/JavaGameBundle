@@ -24,7 +24,8 @@ public class MainMenuController {
         try {
             graphicalUI.startSnake();
         } catch (Exception e) {
-            System.out.println("Failed to start Tic Tac Toe.");;
+            e.printStackTrace();
+            System.out.println("Failed to start Snake.");;
         }
     }
 

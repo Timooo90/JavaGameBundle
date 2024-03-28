@@ -75,7 +75,13 @@ public class GUI extends Application {
         snakeController.startNewGame();
 
         Scene scene = new Scene(root);
+
+        scene.setOnKeyPressed(event -> {
+            snakeController.handleKeyboardInput(event.getCode().toString());
+        });
+
         primaryStage.setScene(scene);
+
         primaryStage.show();
     }
 

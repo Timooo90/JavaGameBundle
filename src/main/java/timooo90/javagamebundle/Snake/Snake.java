@@ -1,7 +1,6 @@
 package timooo90.javagamebundle.Snake;
 
 import java.util.ArrayList;
-import java.util.Timer;
 import java.util.TimerTask;
 
 public class Snake {
@@ -9,8 +8,10 @@ public class Snake {
     private SnakeController controller;
     private int[][] grid;
     private SnakePart head;
+    private ArrayList<SnakePart> bodyParts = new ArrayList<>();
     private Direction direction;
-    private ArrayList<SnakePart> bodyParts;
+    private boolean movedSinceLastInput = true;
+    private int numberOfBodyParts = 0;
 
 
     public Snake(SnakeController controller) {
@@ -20,18 +21,18 @@ public class Snake {
         this.direction = Direction.RIGHT;
 
         grid[head.getXPosition()][head.getYPosition()] = 1;
+        bodyParts.add(new SnakePart(head.getXPosition() - 1, head.getYPosition()));
+        bodyParts.add(new SnakePart(head.getXPosition() - 2, head.getYPosition()));
+        numberOfBodyParts += 2;
     }
 
     public void startGame() {
-        /*
-        Timer timer = new Timer(true);
-        timer.schedule(new renderTimer(), 0, 100);
 
-         */
     }
 
     public void renderFrame() {
         moveSnakeParts();
+        movedSinceLastInput = true;
 
         updateGrid();
     }
@@ -40,16 +41,25 @@ public class Snake {
         int prevX = head.getXPosition();
         int prevY = head.getYPosition();
 
-        System.out.println(head.getXPosition());
-
         switch (direction) {
-            case UP: movePart(head, prevX, prevY - 1);
-            case DOWN: movePart(head, prevX, prevY + 1);
-            case LEFT:  movePart(head, prevX - 1, prevY);
-            case RIGHT: movePart(head, prevX + 1, prevY);
+            case UP: {
+                movePart(head, prevX, prevY - 1);
+                break;
+            }
+            case DOWN: {
+                movePart(head, prevX, prevY + 1);
+                break;
+            }
+            case LEFT: {
+                movePart(head, prevX - 1, prevY);
+                break;
+            }
+            case RIGHT:{
+                movePart(head, prevX + 1, prevY);
+                break;
+            }
         }
-
-        System.out.println(head.getXPosition());
+        moveBody(prevX, prevY);
     }
 
     private void movePart(SnakePart part, int targetX, int targetY) {
@@ -57,10 +67,26 @@ public class Snake {
         part.setYPosition(targetY);
     }
 
+    private void moveBody(int previousX, int previousY) {
+        for (SnakePart part : bodyParts) {
+            int tempPreviousX = part.getXPosition();
+            int tempPreviousY = part.getYPosition();
+
+            movePart(part, previousX, previousY);
+
+            previousX = tempPreviousX;
+            previousY = tempPreviousY;
+        }
+    }
+
     private void updateGrid() {
         grid = new int[gridSize][gridSize];
 
-        grid[head.getXPosition()][head.getYPosition()] = 1;
+        grid[head.getYPosition()][head.getXPosition()] = 1;
+
+        for (SnakePart part : bodyParts) {
+            grid[part.getYPosition()][part.getXPosition()] = 1;
+        }
     }
 
     private class renderTimer extends TimerTask {
@@ -71,5 +97,20 @@ public class Snake {
 
     public int[][] getGrid() {
         return grid;
+    }
+
+    public void changeDirection(Direction targetDirection) {
+        if (!movedSinceLastInput) {
+            return; }
+
+        if ((direction == Direction.UP || direction == Direction.DOWN) && (targetDirection == Direction.UP || targetDirection == Direction.DOWN)) {
+            return; }
+
+        if ((direction == Direction.RIGHT || direction == Direction.LEFT) && (targetDirection == Direction.RIGHT || targetDirection == Direction.LEFT)) {
+            return; }
+
+        direction = targetDirection;
+
+        movedSinceLastInput = false;
     }
 }

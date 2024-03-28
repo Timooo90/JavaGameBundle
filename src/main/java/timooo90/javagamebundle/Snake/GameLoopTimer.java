@@ -12,13 +12,9 @@ public class GameLoopTimer extends AnimationTimer {
 
     @Override
     public void handle(long now) {
-        if (now - lastUpdate >= 500_000_000) {
-            System.out.println("Yay!");
-
+        if (now - lastUpdate >= 300_000_000) {
             lastUpdate = now;
-
             controller.render();
         }
-
     }
 }

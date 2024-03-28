@@ -1,6 +1,5 @@
 package timooo90.javagamebundle.Snake;
 
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -47,11 +46,10 @@ public class SnakeController {
                 cell.setWidth(35);
                 cell.setHeight(35);
 
+                cell.getStyleClass().clear();
                 if (even) {
-                    cell.getStyleClass().clear();
                     cell.getStyleClass().add("snakeGridCell1");
                 } else {
-                    cell.getStyleClass().clear();
                     cell.getStyleClass().add("snakeGridCell2");
                 }
 
@@ -66,5 +64,25 @@ public class SnakeController {
             }
             playArea.getChildren().add(row);
         }
+    }
+
+    public void handleKeyboardInput(String keyPressed) {
+        switch (keyPressed) {
+            case "UP": {
+                game.changeDirection(Direction.UP);
+                break;
+            }
+            case "DOWN": {
+                game.changeDirection(Direction.DOWN);
+                break;
+            }
+            case "LEFT": {
+                game.changeDirection(Direction.LEFT);
+                break;}
+            case "RIGHT": {
+                game.changeDirection(Direction.RIGHT);
+                break;}
+        }
+
     }
 }
